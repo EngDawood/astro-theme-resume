@@ -1,0 +1,1700 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dawood Saleh — Software Engineer</title>
+<meta name="description" content="Software Engineer · AI Tooling · Serverless Backends · Node.js. Building backend systems, Telegram bots, and AI tooling from Sana'a, Yemen." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #fafaf9;
+    --fg: #0a0a0a;
+    --muted: #6b6b66;
+    --line: #e8e6e1;
+    --card: #ffffff;
+    --accent: #ff5722;
+    --accent-soft: #ff572212;
+    --serif: 'Instrument Serif', 'Times New Roman', serif;
+    --sans: 'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --mono: 'Geist Mono', ui-monospace, monospace;
+    --arabic: 'Noto Naskh Arabic', serif;
+    --max: 1180px;
+  }
+  html[data-theme="dark"] {
+    --bg: #0a0a0a;
+    --fg: #f5f5f3;
+    --muted: #8a8a85;
+    --line: #1f1f1d;
+    --card: #131312;
+    --accent: #34d399;
+    --accent-soft: #34d39914;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: 15.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background .25s ease, color .25s ease;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--accent); color: #fff; }
+
+  /* ---------- TOP TOOLBAR ---------- */
+  .toolbar {
+    position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+    z-index: 50;
+    display: flex; align-items: center; gap: 6px;
+    padding: 5px;
+    background: color-mix(in oklab, var(--card) 80%, transparent);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    box-shadow: 0 6px 24px -10px rgba(0,0,0,.18);
+  }
+  .toolbar button {
+    appearance: none; border: 0; background: transparent;
+    font: 500 13px var(--sans); color: var(--muted);
+    padding: 7px 14px; border-radius: 999px; cursor: pointer;
+    transition: all .2s ease;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .toolbar button:hover { color: var(--fg); }
+  .toolbar button.active {
+    background: var(--fg); color: var(--bg);
+  }
+  .toolbar .divider { width: 1px; height: 18px; background: var(--line); margin: 0 2px; }
+  .toolbar .icon-btn { padding: 7px; }
+  .toolbar svg { width: 16px; height: 16px; display: block; }
+  /* Language toggle: only visible in deep mode */
+  .toolbar .lang-group { display: none; align-items: center; gap: 2px; padding: 2px; background: color-mix(in oklab, var(--line) 50%, transparent); border-radius: 999px; }
+  body[data-mode="deep"] .toolbar .lang-group { display: inline-flex; }
+  body[data-mode="deep"] .toolbar .lang-divider { display: inline-block; }
+  .toolbar .lang-divider { display: none; width: 1px; height: 18px; background: var(--line); margin: 0 2px; }
+  .toolbar .lang-btn { padding: 5px 11px; font-size: 12px; font-weight: 500; }
+  .toolbar .lang-btn.active { background: var(--fg); color: var(--bg); }
+  .toolbar .lang-btn.ar { font-family: var(--arabic); font-size: 14px; padding: 3px 11px; }
+
+  /* ---------- COMMON ---------- */
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+  .arabic { font-family: var(--arabic); }
+  .serif { font-family: var(--serif); font-weight: 400; letter-spacing: -.01em; }
+  .mono { font-family: var(--mono); }
+  .muted { color: var(--muted); }
+
+  /* ===================================================== */
+  /* SHORT MODE                                            */
+  /* ===================================================== */
+  body[data-mode="short"] .deep { display: none; }
+  body[data-mode="deep"] .short { display: none; }
+
+  /* Hero */
+  .hero {
+    padding: 140px 0 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 280px) 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero { padding: 110px 0 56px; }
+  }
+  .portrait-wrap {
+    position: relative;
+    width: 100%; aspect-ratio: 1/1;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+  .portrait-wrap::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(120% 80% at 100% 0%, var(--accent-soft), transparent 50%);
+    mix-blend-mode: normal;
+    pointer-events: none;
+  }
+  .portrait-wrap img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: saturate(1.05);
+  }
+  .portrait-frame {
+    position: absolute; inset: -1px;
+    border-radius: 18px;
+    pointer-events: none;
+    background: linear-gradient(135deg, var(--accent), transparent 40%) border-box;
+    -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    padding: 1px;
+    opacity: .6;
+  }
+  .name-arabic {
+    font-family: var(--arabic);
+    font-size: 22px; color: var(--muted);
+    direction: rtl; display: block; margin-bottom: 6px;
+    letter-spacing: -.01em;
+  }
+  .name-en {
+    font-family: var(--serif);
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: .98;
+    letter-spacing: -.02em;
+    font-weight: 400;
+    margin: 0;
+  }
+  .name-en em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .typed-wrap {
+    margin-top: 22px;
+    font-family: var(--mono);
+    font-size: 15px;
+    color: var(--muted);
+    min-height: 28px;
+  }
+  .typed-wrap .prompt { color: var(--accent); margin-right: 8px; }
+  .typed-wrap .cursor {
+    display: inline-block; width: 7px; height: 16px;
+    background: var(--fg); margin-left: 2px; vertical-align: -2px;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .meta-row {
+    margin-top: 26px;
+    display: flex; flex-wrap: wrap; gap: 8px 8px;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--fg);
+    background: color-mix(in oklab, var(--card) 60%, transparent);
+    transition: all .2s ease;
+  }
+  .pill:hover { border-color: var(--fg); transform: translateY(-1px); }
+  .pill svg { width: 14px; height: 14px; opacity: .85; }
+  .pill.live { background: var(--accent-soft); border-color: color-mix(in oklab, var(--accent) 30%, var(--line)); color: var(--fg); }
+  .pill.live .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); position: relative;
+  }
+  .pill.live .dot::after {
+    content: ''; position: absolute; inset: -3px;
+    border-radius: 50%; border: 1px solid var(--accent);
+    animation: ping 1.6s ease-out infinite;
+  }
+  @keyframes ping {
+    0% { transform: scale(.6); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+  }
+
+  /* Toolkit strip */
+  .toolkit {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 28px 0;
+    margin-top: 40px;
+  }
+  .toolkit-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .toolkit-head .kicker {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--muted); text-transform: uppercase; letter-spacing: .14em;
+  }
+  .toolkit-head .kicker::before {
+    content: "// "; color: var(--accent);
+  }
+  .toolkit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 760px) { .toolkit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+  .tool {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--card);
+    transition: transform .2s ease, border-color .2s ease, background .2s ease;
+  }
+  .tool:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab, var(--accent) 50%, var(--line));
+  }
+  .tool-mark {
+    flex: 0 0 auto;
+    width: 36px; height: 36px;
+    display: grid; place-items: center;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .tool-mark svg { width: 20px; height: 20px; display: block; }
+  .tool-body { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+  .tool-name {
+    font-weight: 600; font-size: 14.5px; letter-spacing: -.005em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .tool-sub {
+    margin-top: 3px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--muted); text-transform: uppercase; letter-spacing: .08em;
+  }
+
+  /* Section primitives */
+  .section { padding: 96px 0; border-top: 1px solid var(--line); }
+  .section:first-of-type { border-top: 0; }
+  .section-head {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 40px;
+  }
+  .section-tag {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--accent); text-transform: uppercase; letter-spacing: .14em;
+  }
+  .section-title {
+    font-family: var(--serif); font-size: clamp(34px, 4vw, 52px);
+    margin: 0; letter-spacing: -.02em; font-weight: 400; line-height: 1.05;
+  }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+  }
+  @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; gap: 28px; } }
+  .about-grid p {
+    font-size: 19px; line-height: 1.55; color: var(--fg);
+    margin: 0 0 18px;
+  }
+  .about-grid p.lead { font-family: var(--serif); font-size: 26px; line-height: 1.3; font-weight: 400; }
+
+  /* Case-study project rows */
+  .project {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    padding: 64px 0;
+    border-top: 1px dashed var(--line);
+  }
+  .project:first-child { border-top: 0; padding-top: 0; }
+  .project.reverse { direction: rtl; }
+  .project.reverse > * { direction: ltr; }
+  @media (max-width: 880px) {
+    .project, .project.reverse { grid-template-columns: 1fr; gap: 28px; direction: ltr; }
+  }
+  .project-visual {
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    position: relative;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .3s;
+  }
+  .project:hover .project-visual { transform: translateY(-4px); border-color: color-mix(in oklab, var(--accent) 50%, var(--line)); }
+  .project-num {
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    margin-bottom: 14px; letter-spacing: .12em;
+  }
+  .project-title {
+    font-family: var(--serif); font-size: clamp(28px, 3.2vw, 40px);
+    margin: 0 0 14px; font-weight: 400; line-height: 1.1; letter-spacing: -.02em;
+  }
+  .project-desc { color: var(--muted); font-size: 16px; margin: 0 0 22px; }
+  .project-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+  .chip {
+    font-family: var(--mono); font-size: 11px;
+    padding: 4px 9px; border: 1px solid var(--line); border-radius: 4px;
+    color: var(--muted); background: var(--card);
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 500; color: var(--accent);
+    border-bottom: 1px solid color-mix(in oklab, var(--accent) 40%, transparent);
+    padding-bottom: 2px;
+    transition: gap .2s ease;
+  }
+  .project-link:hover { gap: 12px; }
+  .project-links { display: flex; flex-wrap: wrap; gap: 22px; row-gap: 10px; align-items: center; }
+
+  /* Project visuals (illustrative mockups) */
+  .pv-mcp { background: linear-gradient(135deg, #0f172a, #1e293b); padding: 24px; color: #e2e8f0; font-family: var(--mono); font-size: 12.5px; }
+  .pv-mcp .row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .pv-mcp .dot { width: 8px; height: 8px; border-radius: 50%; background: #475569; }
+  .pv-mcp .dot.g { background: #34d399; box-shadow: 0 0 8px #34d399; }
+  .pv-mcp .req { color: #94a3b8; }
+  .pv-mcp .key { color: #f0abfc; }
+  .pv-mcp .val { color: #fde68a; }
+  .pv-mcp .ok { color: #34d399; }
+  .pv-mcp .count {
+    margin-top: 14px; padding-top: 12px;
+    border-top: 1px dashed #334155;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .pv-mcp .count strong { font-family: var(--serif); font-size: 32px; color: #f1f5f9; font-weight: 400; }
+
+  .pv-bot { background: #229ED9; padding: 0; display: flex; flex-direction: column; gap: 0; }
+  .pv-bot .pv-bot-header { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,.97); border-bottom: 1px solid rgba(0,0,0,.06); }
+  .pv-bot .pv-bot-header .pv-bot-avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; flex: 0 0 36px; background: #e5e7eb; }
+  .pv-bot .pv-bot-header .pv-bot-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pv-bot .pv-bot-header .pv-bot-meta { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+  .pv-bot .pv-bot-header .pv-bot-name { font-size: 14px; font-weight: 600; color: #111; }
+  .pv-bot .pv-bot-header .pv-bot-handle { font-family: var(--mono); font-size: 11px; color: #229ED9; letter-spacing: .02em; }
+  .pv-bot .pv-bot-thread { padding: 16px; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end; flex: 1; min-height: 0; }
+  .pv-bot .msg { padding: 9px 13px; border-radius: 14px; max-width: 80%; font-size: 13px; line-height: 1.4; box-shadow: 0 1px 0 rgba(0,0,0,.06); }
+  .pv-bot .msg.in { background: #fff; color: #111; border-bottom-left-radius: 4px; align-self: flex-start; font-family: var(--mono); font-size: 12.5px; }
+  .pv-bot .msg.out { background: #effdde; color: #111; border-bottom-right-radius: 4px; align-self: flex-end; }
+  .pv-bot .msg .meta { display: block; font-size: 10px; color: #6b8e23; margin-top: 4px; }
+
+  .pv-ocr { background: var(--card); display: grid; grid-template-columns: 1fr 1fr; }
+  .pv-ocr .side { padding: 22px; }
+  .pv-ocr .side.before { background: #faf6ed; color: #1a1a1a; border-right: 1px dashed var(--line); }
+  .pv-ocr .side.after { background: #0f0f0e; color: #f5f5f3; font-family: var(--mono); font-size: 11.5px; }
+  .pv-ocr .tag { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; opacity: .6; text-transform: uppercase; margin-bottom: 10px; }
+  .pv-ocr .lines { display: flex; flex-direction: column; gap: 6px; }
+  .pv-ocr .ln { height: 6px; background: currentColor; opacity: .25; border-radius: 2px; }
+  .pv-ocr .ln.w80 { width: 80%; } .pv-ocr .ln.w60 { width: 60%; } .pv-ocr .ln.w90 { width: 90%; } .pv-ocr .ln.w40 { width: 40%; }
+  .pv-ocr .ar { font-family: var(--arabic); font-size: 18px; direction: rtl; text-align: right; opacity: .65; }
+  .pv-ocr .json { color: #94a3b8; }
+  .pv-ocr .json b { color: #34d399; font-weight: 400; }
+
+  /* Project visual — Yemen Jobs channel */
+  .pv-channel { background: #17212b; color: #e7ecf2; display: flex; flex-direction: column; }
+  .pv-channel .ch-head {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px;
+    background: #232e3c;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+  }
+  .pv-channel .ch-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    flex: 0 0 40px;
+    background: linear-gradient(135deg, #ce1126 0%, #ce1126 33%, #ffffff 33%, #ffffff 66%, #0a0a0a 66%);
+    display: grid; place-items: center;
+    font-family: var(--arabic); font-size: 15px; font-weight: 700; color: #fff;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.1);
+    position: relative;
+  }
+  .pv-channel .ch-avatar::after {
+    content: 'HR'; position: absolute; inset: 0;
+    display: grid; place-items: center;
+    font-family: var(--mono); font-size: 13px; font-weight: 700; color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.5);
+  }
+  .pv-channel .ch-meta { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; flex: 1; }
+  .pv-channel .ch-name { font-size: 14px; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 6px; }
+  .pv-channel .ch-name svg { width: 13px; height: 13px; color: #5eb5f7; }
+  .pv-channel .ch-sub { font-family: var(--mono); font-size: 11px; color: #7a8a98; letter-spacing: .02em; }
+  .pv-channel .ch-subs-pill {
+    margin-left: auto;
+    font-family: var(--mono); font-size: 10.5px;
+    padding: 4px 9px; border-radius: 999px;
+    background: rgba(94, 181, 247, .15); color: #5eb5f7;
+    letter-spacing: .03em; white-space: nowrap;
+  }
+  .pv-channel .ch-body {
+    padding: 16px;
+    flex: 1; display: flex; flex-direction: column; gap: 10px;
+    background:
+      radial-gradient(60% 40% at 20% 0%, rgba(94,181,247,.06), transparent 60%),
+      #17212b;
+  }
+  .pv-channel .ch-post {
+    background: #2b5278; color: #fff;
+    border-radius: 12px; border-top-right-radius: 4px;
+    padding: 11px 13px 9px;
+    font-size: 12.5px; line-height: 1.5;
+    max-width: 92%; align-self: flex-end;
+    box-shadow: 0 1px 0 rgba(0,0,0,.15);
+  }
+  .pv-channel .ch-post .ch-title {
+    font-family: var(--arabic); font-size: 14px; font-weight: 700;
+    direction: rtl; text-align: right;
+    margin-bottom: 6px;
+    color: #fff;
+  }
+  .pv-channel .ch-post .ch-row {
+    font-family: var(--arabic); font-size: 12.5px;
+    direction: rtl; text-align: right;
+    color: #d9e6f2;
+    display: flex; gap: 6px; justify-content: flex-end;
+  }
+  .pv-channel .ch-post .ch-row b { font-weight: 700; color: #fff; }
+  .pv-channel .ch-post .ch-tags {
+    margin-top: 8px;
+    font-family: var(--mono); font-size: 10.5px;
+    color: #9fd0ff;
+    direction: rtl; text-align: right;
+  }
+  .pv-channel .ch-post .ch-foot {
+    margin-top: 8px; padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,.1);
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.55);
+  }
+  .pv-channel .ch-post .ch-foot .eye { display: inline-flex; align-items: center; gap: 4px; }
+  .pv-channel .ch-stats {
+    margin-top: auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: rgba(255,255,255,.06);
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+  .pv-channel .ch-stat {
+    background: #17212b; padding: 10px 12px;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .pv-channel .ch-stat .n { font-family: var(--serif); font-size: 22px; line-height: 1; color: #fff; font-weight: 400; }
+  .pv-channel .ch-stat .k { font-family: var(--mono); font-size: 9.5px; color: #7a8a98; text-transform: uppercase; letter-spacing: .1em; }
+
+  /* Experience timeline */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px;
+    width: 1px; background: var(--line);
+  }
+  .job {
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    position: relative;
+    display: grid; grid-template-columns: 180px 1fr; gap: 32px;
+  }
+  .job:first-child { border-top: 0; padding-top: 0; }
+  .job::before {
+    content: ''; position: absolute; left: -27px; top: 36px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--muted);
+  }
+  .job:first-child::before { top: 8px; }
+  .job.current::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  @media (max-width: 760px) { .job { grid-template-columns: 1fr; gap: 8px; } }
+  .job-date {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--muted); text-transform: uppercase; letter-spacing: .08em;
+    padding-top: 4px;
+  }
+  .job-title { font-family: var(--serif); font-size: 26px; margin: 0 0 4px; font-weight: 400; letter-spacing: -.01em; }
+  .job-org { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  .job-org .dot-sep { margin: 0 8px; opacity: .5; }
+  .job-points { margin: 0; padding-left: 18px; color: var(--fg); font-size: 15px; }
+  .job-points li { margin-bottom: 6px; line-height: 1.55; }
+  .job-points li::marker { color: var(--accent); }
+
+  /* Skills */
+  .skill-block { padding: 24px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: start; }
+  .skill-block:first-child { border-top: 0; }
+  @media (max-width: 760px) { .skill-block { grid-template-columns: 1fr; gap: 12px; } }
+  .skill-block h3 { font-family: var(--serif); font-size: 22px; margin: 0; font-weight: 400; }
+  .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-list .chip { font-size: 12.5px; padding: 5px 10px; }
+
+  /* Testimonials */
+  .testimonial-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  @media (max-width: 880px) { .testimonial-grid { grid-template-columns: 1fr; } }
+  .quote-card {
+    padding: 28px; border: 1px solid var(--line); border-radius: 14px;
+    background: color-mix(in oklab, var(--card) 80%, transparent);
+    backdrop-filter: blur(10px);
+    display: flex; flex-direction: column;
+    transition: transform .3s, border-color .3s;
+  }
+  .quote-card:hover { transform: translateY(-3px); border-color: color-mix(in oklab, var(--accent) 40%, var(--line)); }
+  .quote-stars { color: var(--accent); font-size: 13px; letter-spacing: 2px; margin-bottom: 14px; }
+  .quote-text { font-family: var(--serif); font-size: 19px; line-height: 1.4; margin: 0 0 18px; }
+  .quote-meta { margin-top: auto; font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+
+  /* CTA / footer */
+  .cta { padding: 120px 0 60px; text-align: center; border-top: 1px solid var(--line); }
+  .cta h2 {
+    font-family: var(--serif); font-size: clamp(40px, 6vw, 84px);
+    font-weight: 400; letter-spacing: -.025em; line-height: 1; margin: 0 0 24px;
+  }
+  .cta h2 em { font-style: italic; color: var(--accent); }
+  .cta-mail {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 16px;
+    padding: 14px 22px; border: 1px solid var(--fg); border-radius: 999px;
+    transition: all .2s ease;
+  }
+  .cta-mail:hover { background: var(--fg); color: var(--bg); }
+  .footer {
+    padding: 28px 0 40px; border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    font-size: 13px; color: var(--muted);
+  }
+  .footer .social { display: flex; gap: 14px; }
+  .footer .social a:hover { color: var(--fg); }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+    transition-delay: var(--d, 0ms);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ===================================================== */
+  /* DEEP MODE — document, sidebar TOC, ATS-friendly        */
+  /* ===================================================== */
+  .deep-shell {
+    max-width: 1200px; margin: 0 auto; padding: 96px 32px 64px;
+    display: grid; grid-template-columns: 220px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .deep-shell { grid-template-columns: 1fr; gap: 24px; padding-top: 88px; }
+    .deep-toc { position: static !important; }
+  }
+  .deep-toc {
+    position: sticky; top: 100px;
+    font-size: 13.5px;
+  }
+  .deep-toc .label {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .14em; margin-bottom: 12px;
+  }
+  .deep-toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+  .deep-toc li { counter-increment: toc; margin: 3px 0; }
+  .deep-toc a {
+    display: flex; gap: 10px; padding: 6px 10px; border-radius: 6px;
+    color: var(--muted); border-left: 2px solid transparent;
+    transition: all .15s ease;
+  }
+  .deep-toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: var(--mono); font-size: 11px; opacity: .6;
+  }
+  .deep-toc a:hover, .deep-toc a.active { color: var(--fg); border-left-color: var(--accent); background: var(--accent-soft); }
+
+  .deep-doc { max-width: 760px; font-size: 15px; line-height: 1.7; }
+  .deep-doc .doc-header {
+    padding-bottom: 32px; margin-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 160px;
+    gap: 32px;
+    align-items: start;
+  }
+  .deep-doc .doc-header .doc-photo {
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .deep-doc .doc-header .doc-photo img {
+    width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block;
+  }
+  @media (max-width: 600px) {
+    .deep-doc .doc-header { grid-template-columns: 100px 1fr; }
+    .deep-doc .doc-header .doc-photo { width: 100px; height: 100px; order: -1; }
+  }
+  .deep-doc h1.doc-name {
+    font-family: var(--serif); font-size: 56px; line-height: 1.05;
+    margin: 0 0 8px; font-weight: 400; letter-spacing: -.02em;
+  }
+  .deep-doc .doc-role {
+    font-size: 15px; color: var(--muted); margin: 0 0 18px;
+  }
+  .deep-doc .doc-contact {
+    display: flex; flex-wrap: wrap; gap: 6px 18px;
+    font-size: 13.5px; color: var(--muted);
+  }
+  .deep-doc .doc-contact a { color: var(--fg); border-bottom: 1px solid var(--line); }
+  .deep-doc .doc-contact a:hover { border-bottom-color: var(--accent); }
+  .deep-doc h2.doc-section {
+    font-family: var(--serif); font-size: 26px; margin: 48px 0 14px;
+    font-weight: 400; letter-spacing: -.01em;
+    padding-bottom: 8px; border-bottom: 1px solid var(--line);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .deep-doc h2.doc-section::before {
+    content: '§'; color: var(--accent); font-style: italic;
+  }
+  .deep-doc h3.doc-item-title { font-size: 16px; margin: 24px 0 2px; font-weight: 600; }
+  .deep-doc .doc-item-meta { font-size: 13.5px; color: var(--muted); margin: 0 0 8px; }
+  .deep-doc .doc-item-meta .sep { margin: 0 6px; opacity: .5; }
+  .deep-doc ul.doc-bullets { margin: 6px 0 0; padding-left: 20px; }
+  .deep-doc ul.doc-bullets li { margin-bottom: 4px; }
+  .deep-doc ul.doc-bullets li::marker { color: var(--muted); }
+  .deep-doc .doc-skill-row {
+    display: grid; grid-template-columns: 160px 1fr; gap: 16px;
+    padding: 10px 0; border-bottom: 1px dashed var(--line);
+  }
+  .deep-doc .doc-skill-row:last-child { border-bottom: 0; }
+  .deep-doc .doc-skill-row strong { font-weight: 600; font-size: 13.5px; }
+  .deep-doc .doc-skill-row span { color: var(--muted); font-size: 14px; }
+  .deep-doc .doc-cert-row {
+    display: grid; grid-template-columns: 70px 1fr;
+    padding: 8px 0; border-bottom: 1px dashed var(--line);
+    align-items: baseline; gap: 16px;
+  }
+  .deep-doc .doc-cert-row:last-child { border-bottom: 0; }
+  .deep-doc .doc-cert-row .y { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .deep-doc .doc-cert-row .t { font-size: 14.5px; }
+  .deep-doc .doc-cert-row .t b { font-weight: 500; }
+  .deep-doc .doc-cert-row .t span { color: var(--muted); }
+  .deep-doc .doc-lang-row {
+    display: grid; grid-template-columns: 120px 1fr;
+    padding: 8px 0; border-bottom: 1px dashed var(--line);
+  }
+  .deep-doc .doc-lang-row:last-child { border-bottom: 0; }
+  .deep-doc .doc-lang-row strong { font-weight: 600; font-size: 14px; }
+  .deep-doc .doc-lang-row span { color: var(--muted); font-size: 14px; }
+
+  .print-hint {
+    margin-top: 64px; padding: 16px 18px;
+    background: var(--accent-soft); border: 1px dashed color-mix(in oklab, var(--accent) 35%, var(--line));
+    border-radius: 10px; font-size: 13.5px; color: var(--muted);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .print-hint b { color: var(--fg); font-weight: 600; }
+
+  /* ---------- ARABIC / RTL ---------- */
+  body[data-lang="ar"] .deep-doc {
+    direction: rtl;
+    text-align: right;
+    font-family: var(--arabic);
+    font-size: 16px;
+    line-height: 1.85;
+  }
+  body[data-lang="ar"] .deep-doc h1.doc-name,
+  body[data-lang="ar"] .deep-doc h2.doc-section,
+  body[data-lang="ar"] .deep-doc h3.doc-item-title {
+    font-family: var(--arabic);
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  body[data-lang="ar"] .deep-doc h1.doc-name { font-size: 44px; line-height: 1.2; }
+  body[data-lang="ar"] .deep-doc h2.doc-section { font-size: 24px; }
+  body[data-lang="ar"] .deep-doc h2.doc-section::before { content: '٭'; margin-left: 8px; margin-right: 0; }
+  body[data-lang="ar"] .deep-doc ul.doc-bullets { padding-left: 0; padding-right: 22px; }
+  body[data-lang="ar"] .deep-doc .doc-skill-row,
+  body[data-lang="ar"] .deep-doc .doc-cert-row,
+  body[data-lang="ar"] .deep-doc .doc-lang-row { direction: rtl; }
+  body[data-lang="ar"] .deep-toc { direction: rtl; text-align: right; font-family: var(--arabic); font-size: 14.5px; }
+  body[data-lang="ar"] .deep-toc a { border-left: 0; border-right: 2px solid transparent; }
+  body[data-lang="ar"] .deep-toc a:hover,
+  body[data-lang="ar"] .deep-toc a.active { border-right-color: var(--accent); }
+  body[data-lang="ar"] .deep-doc .doc-contact { font-family: var(--sans); direction: ltr; justify-content: flex-end; }
+  body[data-lang="ar"] .deep-doc .doc-item-meta { font-family: var(--sans); direction: rtl; }
+  body[data-lang="ar"] .deep-doc .doc-cert-row .y,
+  body[data-lang="ar"] .deep-doc .doc-cert-row .t { font-family: var(--arabic); }
+  body[data-lang="ar"] .deep-doc .doc-cert-row .y { font-family: var(--mono); }
+  body[data-lang="ar"] .print-hint { direction: rtl; font-family: var(--arabic); }
+
+  /* Show only the active language inside deep mode */
+  body[data-lang="en"] .deep [data-lang="ar"] { display: none; }
+  body[data-lang="ar"] .deep [data-lang="en"] { display: none; }
+
+  /* ---------- PRINT ---------- */
+  @media print {
+    @page { size: A4; margin: 16mm 14mm; }
+    html, body { background: #fff; color: #000; }
+    html { --bg: #fff; --fg: #000; --muted: #555; --line: #ddd; --card: #fff; --accent: #000; --accent-soft: #f5f5f5; }
+    .toolbar, .short, .print-hint { display: none !important; }
+    body[data-mode="short"] .deep { display: block !important; }
+    .deep-shell { padding: 0; grid-template-columns: 1fr; gap: 0; max-width: none; }
+    .deep-toc { display: none; }
+    .deep-doc { max-width: none; font-size: 11pt; line-height: 1.45; }
+    .deep-doc h1.doc-name { font-size: 26pt; }
+    .deep-doc h2.doc-section { font-size: 14pt; margin: 18pt 0 6pt; page-break-after: avoid; }
+    .deep-doc h3.doc-item-title { font-size: 11.5pt; margin-top: 10pt; }
+    .deep-doc .doc-item-meta { font-size: 10pt; }
+    .deep-doc ul.doc-bullets li { font-size: 10.5pt; }
+    .deep-doc .doc-contact { font-size: 10pt; }
+    .deep-doc .doc-contact a { color: #000; border-bottom: 0; }
+    a { color: #000; text-decoration: none; }
+  }
+
+  .clip-fade {
+    -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent);
+    mask-image: linear-gradient(180deg, #000 70%, transparent);
+  }
+</style>
+</head>
+<body data-mode="short" data-theme="light" data-lang="en">
+
+<template id="__bundler_thumbnail" data-bg-color="#fafaf9">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#fafaf9"/>
+    <text x="80" y="380" font-family="serif" font-size="180" font-style="italic" fill="#0a0a0a">Dawood</text>
+    <text x="80" y="540" font-family="serif" font-size="180" font-style="italic" fill="#ff5722">Saleh.</text>
+    <circle cx="980" cy="200" r="120" fill="#ff5722" opacity="0.12"/>
+    <rect x="80" y="640" width="180" height="3" fill="#ff5722"/>
+    <text x="80" y="700" font-family="monospace" font-size="22" fill="#6b6b66" letter-spacing="4">SOFTWARE ENGINEER</text>
+  </svg>
+</template>
+
+<!-- TOOLBAR -->
+<nav class="toolbar" aria-label="View controls">
+  <button id="mode-short" class="active" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+    Interactive
+  </button>
+  <button id="mode-deep" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>
+    Document
+  </button>
+  <span class="lang-divider"></span>
+  <span class="lang-group" role="group" aria-label="Document language">
+    <button id="lang-en" class="lang-btn active" type="button">EN</button>
+    <button id="lang-ar" class="lang-btn ar" type="button">ع</button>
+  </span>
+  <span class="divider"></span>
+  <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle theme">
+    <svg id="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    <svg id="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+</nav>
+
+<!-- ===================================================== -->
+<!-- SHORT MODE                                            -->
+<!-- ===================================================== -->
+<div class="short">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="portrait-wrap reveal">
+          <img src="assets/profile.jpg" alt="Dawood Saleh" />
+          <span class="portrait-frame"></span>
+        </div>
+        <div>
+          <h1 class="name-en reveal" style="--d:160ms">Dawood <em>Saleh</em></h1>
+          <div class="typed-wrap reveal" style="--d:240ms">
+            <span class="prompt">~$</span><span id="typed"></span><span class="cursor"></span>
+          </div>
+          <div class="meta-row reveal" style="--d:320ms">
+            <span class="pill live"><span class="dot"></span> Available · Remote / Relocation</span>
+            <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg> Sana'a, Yemen</span>
+            <a href="mailto:eng.dawoodsaleh@gmail.com" class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> eng.dawoodsaleh@gmail.com</a>
+            <a href="https://github.com/EngDawood" target="_blank" rel="noopener" class="pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.3 1.2-3.1-.1-.4-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg> EngDawood</a>
+            <a href="https://www.linkedin.com/in/dawood3/" target="_blank" rel="noopener" class="pill"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.15C0 .51.53 0 1.18 0h13.65C15.47 0 16 .51 16 1.15v13.7c0 .64-.53 1.15-1.17 1.15H1.18C.53 16 0 15.49 0 14.85zm4.94 12.25V6.17H2.54v7.23zm-1.2-8.22c.84 0 1.36-.55 1.36-1.25-.02-.7-.52-1.25-1.34-1.25S2.4 3.23 2.4 3.93c0 .7.52 1.25 1.33 1.25zm4.91 8.22V9.36c0-.22.02-.43.08-.59.17-.43.57-.88 1.23-.88.87 0 1.22.66 1.22 1.64v3.86h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.27 0-1.85.7-2.16 1.19v.02h-.02v-1.04h-2.4c.03.68 0 7.23 0 7.23z"/></svg> LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TOOLKIT -->
+  <section class="toolkit">
+    <div class="container">
+      <div class="toolkit-head reveal">
+        <span class="kicker">Daily drivers</span>
+        <span class="kicker" style="opacity:.7">04 tools</span>
+      </div>
+      <div class="toolkit-grid">
+        <div class="tool reveal">
+          <div class="tool-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 4 L4 12 L7 20" />
+              <path d="M17 4 L20 12 L17 20" />
+              <path d="M13 4 L11 20" />
+            </svg>
+          </div>
+          <div class="tool-body">
+            <div class="tool-name">Claude</div>
+            <div class="tool-sub">AI pair</div>
+          </div>
+        </div>
+
+        <div class="tool reveal" style="--d:80ms">
+          <div class="tool-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 17h11a4 4 0 0 0 .6-7.95 5.5 5.5 0 0 0-10.5-1.3A4.5 4.5 0 0 0 6 17z" />
+              <path d="M3 14h2" />
+            </svg>
+          </div>
+          <div class="tool-body">
+            <div class="tool-name">Cloudflare</div>
+            <div class="tool-sub">Edge / Workers</div>
+          </div>
+        </div>
+
+        <div class="tool reveal" style="--d:160ms">
+          <div class="tool-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 11 L21 4 L17 20 L11 14 Z" />
+              <path d="M11 14 L21 4" />
+              <path d="M11 14 L11 19" />
+            </svg>
+          </div>
+          <div class="tool-body">
+            <div class="tool-name">Telegram</div>
+            <div class="tool-sub">Bots / APIs</div>
+          </div>
+        </div>
+
+        <div class="tool reveal" style="--d:240ms">
+          <div class="tool-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="6" rx="1.5" />
+              <rect x="3" y="14" width="18" height="6" rx="1.5" />
+              <circle cx="7" cy="7" r=".6" fill="currentColor" stroke="none" />
+              <circle cx="7" cy="17" r=".6" fill="currentColor" stroke="none" />
+            </svg>
+          </div>
+          <div class="tool-body">
+            <div class="tool-name">MCP Server</div>
+            <div class="tool-sub">Protocol</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">01 · About</span>
+      </div>
+      <div class="about-grid">
+        <p class="lead reveal" style="--d:80ms">
+          I build serverless backends, MCP servers, AI tooling, and Telegram bots — driven by a deep fascination with how things work, from edge runtimes to protocol integrations.
+        </p>
+        <div class="reveal" style="--d:160ms">
+          <p>Based in Sana'a, Yemen and working remotely with international clients since 2020. My focus is on clean API design, AI-accessible tooling, and serverless architectures on Cloudflare Workers.</p>
+          <p class="muted">I also write research, design presentations, and tutor CS &amp; Mathematics in Arabic and English.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">02 · Featured work</span>
+      </div>
+      <h2 class="section-title reveal" style="--d:80ms">Four things I've shipped recently.</h2>
+      <div style="margin-top:48px;">
+
+        <!-- Project 1: MCP -->
+        <article class="project reveal">
+          <div class="project-visual pv-mcp">
+            <div class="row"><span class="dot g"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:auto; opacity:.5">mcp · arabic-scholar</span></div>
+            <div class="req">→ <span class="ok">search</span>({</div>
+            <div style="padding-left:14px">
+              <span class="key">"query"</span>: <span class="val">"الذكاء الاصطناعي في الطب"</span>,<br/>
+              <span class="key">"source"</span>: <span class="val">"mandumah"</span>,<br/>
+              <span class="key">"limit"</span>: <span class="val">25</span>
+            </div>
+            <div>})</div>
+            <div class="count">
+              <span class="muted">records matched</span>
+              <strong><span data-counter="4128">0</span></strong>
+            </div>
+          </div>
+          <div>
+            <div class="project-num">PROJECT / 01</div>
+            <h3 class="project-title">Arabic Scholar — MCP Server</h3>
+            <p class="project-desc">An open MCP (Model Context Protocol) server giving AI models programmatic access to <b>4M+ Arabic academic records</b> from Mandumah, ASJP, and SHAMAA. Built to close the gap in Arabic-language AI tooling for research.</p>
+            <div class="project-chips">
+              <span class="chip">MCP Protocol</span><span class="chip">Node.js</span><span class="chip">TypeScript</span><span class="chip">Open Source</span>
+            </div>
+            <a class="project-link" href="https://github.com/EngDawood/arabic-scholar-mcp-server" target="_blank" rel="noopener">View on GitHub →</a>
+          </div>
+        </article>
+
+        <!-- Project 2: Yemen Jobs Bot -->
+        <article class="project reverse reveal">
+          <div class="project-visual pv-channel">
+            <div class="ch-head">
+              <div class="ch-avatar" aria-hidden="true"></div>
+              <div class="ch-meta">
+                <span class="ch-name">وظائف اليمن — Yemen HR <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.5 9 L22 9 L16 13.5 L18.5 21 L12 16.5 L5.5 21 L8 13.5 L2 9 L9.5 9 Z" stroke="none"/></svg></span>
+                <span class="ch-sub">@hr_yemen · channel</span>
+              </div>
+              <span class="ch-subs-pill">4.9K subs</span>
+            </div>
+            <div class="ch-body">
+              <div class="ch-post">
+                <div class="ch-title">مهندس برمجيات — صنعاء</div>
+                <div class="ch-row"><b>الجهة:</b><span>ReliefWeb · UNDP</span></div>
+                <div class="ch-row"><b>الموقع:</b><span>صنعاء · حضوري</span></div>
+                <div class="ch-tags">#yemenhr  #وظائف  #UNDP</div>
+                <div class="ch-foot">
+                  <span>auto-translated · qwen3</span>
+                  <span style="margin-left:auto" class="eye">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                    2.1K
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="ch-stats">
+              <div class="ch-stat"><span class="n"><span data-counter="4900">0</span></span><span class="k">subscribers</span></div>
+              <div class="ch-stat"><span class="n">6</span><span class="k">job sources</span></div>
+              <div class="ch-stat"><span class="n">1<span style="font-family:var(--mono); font-size:12px; vertical-align:6px">h</span></span><span class="k">cron cadence</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="project-num">PROJECT / 02</div>
+            <h3 class="project-title">Yemen Jobs Bot — <span class="mono" style="font-size:.55em; vertical-align:.35em; color:var(--muted)">@hr_yemen</span></h3>
+            <p class="project-desc">A Cloudflare Worker that aggregates Yemen job listings from <b>6 sources</b> (ReliefWeb, Yemen HR, EOI, and more), <b>AI-translates them to Arabic</b> via Workers AI, and posts to the <b>@hr_yemen</b> Telegram channel — now serving <b>4.9K+ subscribers</b>. Built on a plugin system (RSS / scraper / API), with KV dedup, D1 archive, 13 admin commands, and 12 REST endpoints.</p>
+            <div class="project-chips">
+              <span class="chip">Cloudflare Workers</span><span class="chip">Workers AI</span><span class="chip">D1 + KV</span><span class="chip">TypeScript</span><span class="chip">Telegram</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://t.me/hr_yemen" target="_blank" rel="noopener">Join channel →</a>
+              <a class="project-link" href="https://t.me/Yemenhrbot" target="_blank" rel="noopener">Open bot →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Telegram bot -->
+        <article class="project reveal">
+          <div class="project-visual pv-bot">
+            <div class="pv-bot-header">
+              <div class="pv-bot-avatar"><img src="assets/download_media_4bot.jpg" alt="@download_media_4bot" /></div>
+              <div class="pv-bot-meta">
+                <span class="pv-bot-name">Download Media Bot</span>
+                <span class="pv-bot-handle">@download_media_4bot</span>
+              </div>
+            </div>
+            <div class="pv-bot-thread">
+              <div class="msg in">/dl https://x.com/.../status/...</div>
+              <div class="msg out"><b>9 platforms supported</b> · processing media…<span class="meta">via cloudflare workers · 230ms</span></div>
+              <div class="msg in">/stats</div>
+              <div class="msg out">📊 24,810 downloads · 3,402 unique users<span class="meta">cron-aggregated · KV-backed</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="project-num">PROJECT / 03</div>
+            <h3 class="project-title">Multi-Platform Telegram Media Bot</h3>
+            <p class="project-desc">Telegram bot supporting downloads from <b>9+ platforms</b>, deployed on Cloudflare Workers with Hono, KV storage, webhook automation, and cron scheduling. Built for speed at the edge.</p>
+            <div class="project-chips">
+              <span class="chip">Hono</span><span class="chip">Cloudflare Workers</span><span class="chip">KV / Cron</span><span class="chip">TypeScript</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://t.me/download_media_4bot" target="_blank" rel="noopener">Try on Telegram →</a>
+              <a class="project-link" href="https://github.com/EngDawood/download-media" target="_blank" rel="noopener">View on GitHub →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Mistral OCR -->
+        <article class="project reverse reveal">
+          <div class="project-visual pv-ocr">
+            <div class="side before">
+              <div class="tag">PDF · scan</div>
+              <div class="ar">المخطوطة الأصلية</div>
+              <div class="lines" style="margin-top:10px">
+                <span class="ln w90"></span><span class="ln w80"></span><span class="ln w60"></span><span class="ln w90"></span><span class="ln w40"></span>
+              </div>
+            </div>
+            <div class="side after">
+              <div class="tag" style="opacity:.4">JSON · OCR</div>
+              <div class="json" style="margin-top:10px; line-height:1.7">
+                <b>"lang"</b>: "ar",<br/>
+                <b>"pages"</b>: 184,<br/>
+                <b>"confidence"</b>: 0.97,<br/>
+                <b>"cost"</b>: "$0.42",<br/>
+                <b>"text"</b>: "…"
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="project-num">PROJECT / 04</div>
+            <h3 class="project-title">Mistral OCR Pipeline</h3>
+            <p class="project-desc">Python scripts for PDF OCR, audio transcription, and document processing using the Mistral AI API. Batch processing, cost tracking, and full Arabic support — built for cleanly digitizing academic archives.</p>
+            <div class="project-chips">
+              <span class="chip">Python</span><span class="chip">Mistral AI</span><span class="chip">OCR</span><span class="chip">Arabic</span>
+            </div>
+            <a class="project-link" href="https://github.com/EngDawood/mistral-ocr" target="_blank" rel="noopener">View on GitHub →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">03 · Experience</span>
+      </div>
+      <h2 class="section-title reveal" style="--d:80ms">Six years across engineering, teaching, and research.</h2>
+      <div class="timeline" style="margin-top:48px">
+
+        <div class="job current reveal">
+          <div class="job-date">Apr 2023 — Now</div>
+          <div>
+            <h3 class="job-title">Software Engineer</h3>
+            <p class="job-org">Self-Employed<span class="dot-sep">·</span>Remote</p>
+            <ul class="job-points">
+              <li>Shipped <b>Yemen Jobs Bot</b> — a Cloudflare Worker aggregating 6 job sources with AI Arabic translation; now serving <b>4.9K+ subscribers</b> at <a href="https://t.me/hr_yemen" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line)">@hr_yemen</a>.</li>
+              <li>Shipped a multi-platform Telegram media bot on Cloudflare Workers — 9+ platforms, analytics, KV-backed.</li>
+              <li>Open-sourced the Arabic Scholar MCP server — 4M+ academic records exposed to AI agents.</li>
+              <li>Built serverless backends with webhook automation, cron jobs, and clean REST APIs for international clients.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job reveal">
+          <div class="job-date">Oct 2022 — Apr 2023</div>
+          <div>
+            <h3 class="job-title">Teaching Assistant</h3>
+            <p class="job-org">Hajjah University<span class="dot-sep">·</span>Hajjah, Yemen</p>
+            <ul class="job-points">
+              <li>Taught Object-Oriented Programming (Java) to 60+ undergraduates across 2nd and 3rd year.</li>
+              <li>Designed practical lab sessions and reviewed student code for academic project delivery.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job reveal">
+          <div class="job-date">2020 — Now</div>
+          <div>
+            <h3 class="job-title">Academic Research Writer &amp; Presentation Designer</h3>
+            <p class="job-org">Freelance — Upwork &amp; Fiverr<span class="dot-sep">·</span>Remote</p>
+            <ul class="job-points">
+              <li>Authored and edited papers in ML, data analysis, and cybersecurity — IEEE / APA / Elsevier with LaTeX.</li>
+              <li>Designed 70+ presentations adopted by international conferences and Middle-East universities.</li>
+              <li>Co-authored published research on AI in healthcare (Journal of Computer Science, 2023).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job reveal">
+          <div class="job-date">2020 — Now</div>
+          <div>
+            <h3 class="job-title">Online Private Tutor</h3>
+            <p class="job-org">Independent<span class="dot-sep">·</span>Saudi &amp; Yemeni Students</p>
+            <ul class="job-points">
+              <li>Daily online tutoring in CS, Mathematics, English, and Physics — Saudi curriculum, bilingual delivery.</li>
+              <li>Average 25% exam-score lift across student cohorts.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job reveal">
+          <div class="job-date">Jul — Aug 2021</div>
+          <div>
+            <h3 class="job-title">Field Surveyor</h3>
+            <p class="job-org">Moore Yemen<span class="dot-sep">·</span>Hajjah, Yemen</p>
+            <ul class="job-points">
+              <li>Field surveys and site inspections supporting audit &amp; advisory engagements.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">04 · Stack</span>
+      </div>
+      <h2 class="section-title reveal" style="--d:80ms">What I reach for.</h2>
+      <div style="margin-top:48px">
+        <div class="skill-block reveal">
+          <h3>Backend &amp; Infra</h3>
+          <div class="skill-list">
+            <span class="chip">Node.js</span><span class="chip">TypeScript</span><span class="chip">Python</span>
+            <span class="chip">Hono</span><span class="chip">Cloudflare Workers</span><span class="chip">KV · Cron · Webhooks</span>
+            <span class="chip">REST API Design</span><span class="chip">PHP / Laravel</span><span class="chip">Serverless</span>
+          </div>
+        </div>
+        <div class="skill-block reveal">
+          <h3>AI &amp; Tooling</h3>
+          <div class="skill-list">
+            <span class="chip">MCP Server Development</span><span class="chip">Mistral AI API</span>
+            <span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span><span class="chip">TensorFlow</span>
+          </div>
+        </div>
+        <div class="skill-block reveal">
+          <h3>Frontend</h3>
+          <div class="skill-list">
+            <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript (ES6+)</span>
+          </div>
+        </div>
+        <div class="skill-block reveal">
+          <h3>Databases</h3>
+          <div class="skill-list">
+            <span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">Schema Design</span><span class="chip">SQL Optimization</span><span class="chip">Redis</span>
+          </div>
+        </div>
+        <div class="skill-block reveal">
+          <h3>DevOps</h3>
+          <div class="skill-list">
+            <span class="chip">Git / GitHub</span><span class="chip">Linux CLI</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">LaTeX</span>
+          </div>
+        </div>
+        <div class="skill-block reveal">
+          <h3>Architecture</h3>
+          <div class="skill-list">
+            <span class="chip">Clean Architecture</span><span class="chip">SOLID</span><span class="chip">Repository / Factory / Observer</span><span class="chip">SaaS Multi-Tenancy</span><span class="chip">Microservices</span><span class="chip">Unit Testing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">05 · Reviews</span>
+      </div>
+      <h2 class="section-title reveal" style="--d:80ms">Five-star feedback from 92% of clients.</h2>
+      <p class="muted reveal" style="--d:160ms; max-width:560px; margin-top:14px;">Aggregated from 70+ projects delivered on Upwork &amp; Fiverr since 2020.</p>
+      <div class="testimonial-grid" style="margin-top:48px">
+        <div class="quote-card reveal">
+          <div class="quote-stars">★★★★★</div>
+          <p class="quote-text">"Delivered on time, clean code, and patient with revisions. The kind of engineer you keep on speed-dial."</p>
+          <div class="quote-meta">Upwork client · Backend project</div>
+        </div>
+        <div class="quote-card reveal" style="--d:80ms">
+          <div class="quote-stars">★★★★★</div>
+          <p class="quote-text">"Research paper formatted to IEEE perfectly. Bilingual reviewer notes were a bonus I didn't expect."</p>
+          <div class="quote-meta">Fiverr client · Academic writing</div>
+        </div>
+        <div class="quote-card reveal" style="--d:160ms">
+          <div class="quote-stars">★★★★★</div>
+          <p class="quote-text">"Built our Cloudflare bot integration in days, not weeks. Documentation was as good as the code."</p>
+          <div class="quote-meta">Upwork client · Telegram automation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2 class="reveal">Have a backend problem?<br/><em>Let's make it boring.</em></h2>
+      <p class="muted reveal" style="--d:80ms; max-width:560px; margin: 0 auto 32px;">Open to remote contracts, full-time roles, and AI-tooling collaborations. Fast reply within 24 hours.</p>
+      <a class="cta-mail reveal" style="--d:160ms" href="mailto:eng.dawoodsaleh@gmail.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        eng.dawoodsaleh@gmail.com
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; width:100%;">
+      <div>© 2026 Dawood Saleh · <span class="mono">Sana'a → World</span></div>
+      <div class="social">
+        <a href="https://github.com/EngDawood" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/dawood3/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/dawo5d" target="_blank" rel="noopener">X</a>
+        <a href="https://t.me/Dawo5d" target="_blank" rel="noopener">Telegram</a>
+        <a href="http://engdawood.com" target="_blank" rel="noopener">engdawood.com</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================================================== -->
+<!-- DEEP MODE — Document / ATS-friendly                  -->
+<!-- ===================================================== -->
+<div class="deep">
+  <div class="deep-shell">
+    <aside class="deep-toc" aria-label="Contents" data-lang="en">
+      <div class="label">Contents</div>
+      <ol>
+        <li><a href="#d-summary">Summary</a></li>
+        <li><a href="#d-projects">Featured Projects</a></li>
+        <li><a href="#d-experience">Experience</a></li>
+        <li><a href="#d-education">Education</a></li>
+        <li><a href="#d-skills">Skills</a></li>
+        <li><a href="#d-certs">Certifications</a></li>
+        <li><a href="#d-languages">Languages</a></li>
+        <li><a href="#d-accomplishments">Accomplishments</a></li>
+      </ol>
+    </aside>
+
+    <aside class="deep-toc" aria-label="المحتويات" data-lang="ar">
+      <div class="label">المحتويات</div>
+      <ol>
+        <li><a href="#d-summary-ar">نبذة</a></li>
+        <li><a href="#d-projects-ar">المشاريع</a></li>
+        <li><a href="#d-experience-ar">الخبرات العملية</a></li>
+        <li><a href="#d-education-ar">المؤهلات العلمية</a></li>
+        <li><a href="#d-skills-ar">المهارات التقنية</a></li>
+        <li><a href="#d-certs-ar">الشهادات</a></li>
+        <li><a href="#d-languages-ar">اللغات</a></li>
+        <li><a href="#d-accomplishments-ar">الإنجازات</a></li>
+      </ol>
+    </aside>
+
+    <article class="deep-doc" data-lang="en">
+      <header class="doc-header">
+        <div class="doc-header-text">
+          <h1 class="doc-name">Dawood Saleh</h1>
+          <p class="doc-role">Software Engineer · AI Tooling · Serverless Backends · Node.js</p>
+          <div class="doc-contact">
+            <span>Sana'a, Yemen · Open to Remote / Relocation</span>
+            <a href="tel:+967777505208">+967 777 505 208</a>
+            <a href="mailto:eng.dawoodsaleh@gmail.com">eng.dawoodsaleh@gmail.com</a>
+            <a href="https://github.com/EngDawood" target="_blank" rel="noopener">github.com/EngDawood</a>
+            <a href="https://www.linkedin.com/in/dawood3/" target="_blank" rel="noopener">linkedin.com/in/dawood3</a>
+            <a href="https://x.com/dawo5d" target="_blank" rel="noopener">x.com/dawo5d</a>
+            <a href="https://t.me/Dawo5d" target="_blank" rel="noopener">t.me/Dawo5d</a>
+            <a href="http://engdawood.com" target="_blank" rel="noopener">engdawood.com</a>
+          </div>
+        </div>
+        <div class="doc-photo">
+          <img src="assets/profile-doc.png" alt="Dawood Saleh" />
+        </div>
+      </header>
+
+      <h2 id="d-summary" class="doc-section">Summary</h2>
+      <p>Software engineer based in Yemen, building backend systems, Telegram bots, and AI tooling. Driven by a deep curiosity for how things work — from serverless infrastructure to MCP protocol integrations.</p>
+      <p>Key focus areas: serverless architectures on Cloudflare Workers, AI-accessible tooling, and clean API design. Also experienced in academic research writing, presentation design, and online tutoring in CS &amp; Mathematics.</p>
+
+      <h2 id="d-projects" class="doc-section">Featured Projects</h2>
+
+      <h3 class="doc-item-title">Arabic Scholar MCP Server</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/arabic-scholar-mcp-server" target="_blank" rel="noopener">github.com/EngDawood/arabic-scholar-mcp-server</a></p>
+      <ul class="doc-bullets">
+        <li>Open MCP (Model Context Protocol) server enabling AI models to search Arabic academic research across 4M+ records from Mandumah, ASJP, and SHAMAA.</li>
+        <li>Published as an open tool for the Arabic research community.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Yemen Jobs Bot — @hr_yemen</h3>
+      <p class="doc-item-meta"><a href="https://t.me/hr_yemen" target="_blank" rel="noopener">t.me/hr_yemen</a><span class="sep">·</span><a href="https://t.me/Yemenhrbot" target="_blank" rel="noopener">t.me/Yemenhrbot</a></p>
+      <ul class="doc-bullets">
+        <li>Cloudflare Worker aggregating Yemen job listings from 6 sources (ReliefWeb, Yemen HR, EOI Yemen, and more) with AI-powered Arabic translation via Workers AI.</li>
+        <li>Auto-posts to the <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> Telegram channel — currently serving <b>4,900+ subscribers</b>; admin controls via <a href="https://t.me/Yemenhrbot" target="_blank" rel="noopener">@Yemenhrbot</a> with 13 commands.</li>
+        <li>Plugin-based source system (RSS / scraper / API), KV-backed duplicate detection, D1 archive across 4 tables, REST API with 12 endpoints, daily summary digest at 11 PM UTC, deploy-on-push to Cloudflare.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Multi-Platform Telegram Media Bot</h3>
+      <p class="doc-item-meta"><a href="https://t.me/download_media_4bot" target="_blank" rel="noopener">t.me/download_media_4bot</a><span class="sep">·</span><a href="https://github.com/EngDawood/download-media" target="_blank" rel="noopener">github.com/EngDawood/download-media</a></p>
+      <ul class="doc-bullets">
+        <li>Telegram bot supporting downloads from 9+ platforms, deployed on Cloudflare Workers — live at <a href="https://t.me/download_media_4bot" target="_blank" rel="noopener">@download_media_4bot</a>.</li>
+        <li>Stack: Node.js, TypeScript, Hono, Cloudflare Workers; features include KV storage, webhook automation, and cron scheduling.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Mistral OCR</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/mistral-ocr" target="_blank" rel="noopener">github.com/EngDawood/mistral-ocr</a></p>
+      <ul class="doc-bullets">
+        <li>Python scripts for PDF OCR, audio transcription, and document processing using the Mistral AI API.</li>
+        <li>Features: batch processing, cost tracking, multilingual support (including Arabic).</li>
+      </ul>
+
+      <h2 id="d-experience" class="doc-section">Experience</h2>
+
+      <h3 class="doc-item-title">Software Engineer — Self-Employed</h3>
+      <p class="doc-item-meta">Remote<span class="sep">·</span>April 2023 – Present</p>
+      <ul class="doc-bullets">
+        <li>Built and deployed a multi-platform Telegram media downloader bot (Node.js, Hono, Cloudflare Workers) supporting 9+ platforms with analytics tracking.</li>
+        <li>Developed the Arabic academic research MCP server integrating 4M+ records from Mandumah, ASJP, and SHAMAA — published as open source.</li>
+        <li>Architected serverless backend systems on Cloudflare Workers with KV storage, webhook automation, and cron scheduling.</li>
+        <li>Built and maintained Node.js backend services focused on performance, reliability, and clean API design.</li>
+        <li>Delivered full-stack development, Python automation, and technical documentation projects for international clients.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Teaching Assistant — Hajjah University</h3>
+      <p class="doc-item-meta">Hajjah, Yemen<span class="sep">·</span>October 2022 – April 2023</p>
+      <ul class="doc-bullets">
+        <li>Taught Object-Oriented Programming (Java) to 60+ undergraduate students (2nd and 3rd year).</li>
+        <li>Designed and led practical lab sessions, translating complex programming concepts into hands-on exercises.</li>
+        <li>Evaluated student projects and provided technical code reviews.</li>
+        <li>Mentored students individually on debugging, software design, and academic project delivery.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Academic Research Writer &amp; Presentation Designer — Freelance</h3>
+      <p class="doc-item-meta">Upwork, Fiverr · Remote<span class="sep">·</span>2020 – Present</p>
+      <ul class="doc-bullets">
+        <li>Authored and edited research papers in machine learning, data analysis, and cybersecurity.</li>
+        <li>Translated academic research between Arabic and English with technical accuracy.</li>
+        <li>Formatted research documents to IEEE, APA, and Elsevier standards using LaTeX and Microsoft Word.</li>
+        <li>Designed 70+ professional presentations for conferences and academic institutions (PowerPoint, Canva, Prezi).</li>
+        <li>Achieved 5-star rating from 92% of clients across 70+ projects.</li>
+        <li>Co-authored research on AI applications in healthcare (Journal of Computer Science, 2023).</li>
+      </ul>
+
+      <h3 class="doc-item-title">Online Private Tutor</h3>
+      <p class="doc-item-meta">Remote — Saudi &amp; Yemeni Students<span class="sep">·</span>2020 – Present</p>
+      <ul class="doc-bullets">
+        <li>Facilitated daily online tutoring sessions for 10–15 students per group in Computer Science, Mathematics, English, and Physics — aligned with the Saudi curriculum.</li>
+        <li>Achieved 25% average exam score improvements across student cohorts.</li>
+        <li>Developed interactive lesson plans, PowerPoint presentations, and visual aids.</li>
+        <li>Delivered bilingual instruction (Arabic &amp; English).</li>
+        <li>Maintained 100% on-time attendance with flexible scheduling.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Field Surveyor — Moore Yemen</h3>
+      <p class="doc-item-meta">Hajjah, Yemen<span class="sep">·</span>July 2021 – August 2021</p>
+      <ul class="doc-bullets">
+        <li>Performed field surveys and data collection for audit and advisory services.</li>
+        <li>Conducted site inspections and documentation; collaborated with audit teams for client projects.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Remittance Teller — Al Tayseer Exchange &amp; Transfer</h3>
+      <p class="doc-item-meta">Hajjah, Yemen<span class="sep">·</span>November 2018 – 2019</p>
+      <ul class="doc-bullets">
+        <li>Handled currency exchange, money transfers, and daily cash operations.</li>
+        <li>Provided professional customer service in a fast-paced banking environment.</li>
+      </ul>
+
+      <h2 id="d-education" class="doc-section">Education</h2>
+      <h3 class="doc-item-title">Hajjah University — B.Sc. Applied Science, Computer Science</h3>
+      <p class="doc-item-meta">Hajjah, Yemen<span class="sep">·</span>2016 – 2020</p>
+      <ul class="doc-bullets">
+        <li>Graduated with Honors (Excellent GPA) — 2019–2020.</li>
+        <li>Specializations: Artificial Intelligence, Data Analysis, Cybersecurity.</li>
+        <li>Key courses: Data Structures &amp; Algorithms, Database Systems, OOP, Software Engineering, Web Technologies, Operating Systems, Computer Networks.</li>
+        <li>Final year project: data-driven application with structured relational database backend.</li>
+      </ul>
+      <h3 class="doc-item-title">Al-Thawra Secondary School (Boys) — High School Diploma</h3>
+      <p class="doc-item-meta">Hajjah, Yemen<span class="sep">·</span>2014<span class="sep">·</span>Excellent GPA</p>
+
+      <h2 id="d-skills" class="doc-section">Technical Skills</h2>
+      <div class="doc-skill-row"><strong>Backend &amp; Infra</strong><span>Node.js, TypeScript, Python, Hono, Cloudflare Workers, KV Storage, Cron, Webhooks, RESTful API Design, MVC, PHP / Laravel (learning), serverless patterns.</span></div>
+      <div class="doc-skill-row"><strong>Frontend</strong><span>React.js, Next.js (learning), HTML5, CSS3, JavaScript (ES6+).</span></div>
+      <div class="doc-skill-row"><strong>Databases</strong><span>MySQL, PostgreSQL, SQL query optimization, Schema Design, Redis (fundamentals).</span></div>
+      <div class="doc-skill-row"><strong>AI &amp; Tooling</strong><span>MCP (Model Context Protocol) server development; Python automation with Pandas, NumPy, Scikit-learn, TensorFlow; Mistral AI API; AI workflow integration.</span></div>
+      <div class="doc-skill-row"><strong>DevOps &amp; Tools</strong><span>Git / GitHub, Linux CLI, Docker (fundamentals), CI/CD concepts; Design Patterns (Repository, Factory, Observer); LaTeX, MS Office, Canva, Prezi.</span></div>
+      <div class="doc-skill-row"><strong>Architecture</strong><span>Clean Architecture, SOLID Principles, SaaS Multi-Tenancy, Microservices (study), Unit Testing principles.</span></div>
+
+      <h2 id="d-certs" class="doc-section">Certifications</h2>
+      <div class="doc-cert-row"><span class="y">2023</span><span class="t"><b>Data Visualization with Python</b> <span>— Udemy</span></span></div>
+      <div class="doc-cert-row"><span class="y">2022</span><span class="t"><b>Academic Writing Certification</b> <span>— Coursera</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>Train the Trainer (TOT)</b> <span>— Edraak × International Board of Certified Trainers</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>Career Preparation</b> <span>— Edraak × British Council</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>English for the Workplace</b> <span>— Edraak × British Council</span></span></div>
+
+      <h2 id="d-languages" class="doc-section">Languages</h2>
+      <div class="doc-lang-row"><strong>Arabic</strong><span>Native</span></div>
+      <div class="doc-lang-row"><strong>English</strong><span>Advanced — C1 (Writing &amp; Speaking)</span></div>
+
+      <h2 id="d-accomplishments" class="doc-section">Accomplishments</h2>
+      <ul class="doc-bullets">
+        <li>Built MCP server now giving AI models access to 4M+ Arabic academic records.</li>
+        <li>Yemen Jobs Bot serving <b>4,900+ Telegram subscribers</b> at <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> with AI-translated job posts from 6 sources.</li>
+        <li>5-star freelance rating achieved by 92% of clients on Upwork &amp; Fiverr.</li>
+        <li>Co-authored published research on AI in healthcare (Journal of Computer Science, 2023).</li>
+        <li>Designed 70+ research presentations adopted by international conferences and universities in the Middle East.</li>
+        <li>Recognized data infographic series adopted by universities across the Middle East.</li>
+        <li>Mentored 30+ students with measurable grade improvements and high parental satisfaction.</li>
+        <li>GitHub: 76 repositories · 315 stars given · Quickdraw · Pair Extraordinaire · Pull Shark ×2 · YOLO.</li>
+      </ul>
+
+    </article>
+
+    <!-- ============== ARABIC DOCUMENT ============== -->
+    <article class="deep-doc" data-lang="ar" lang="ar" dir="rtl">
+      <header class="doc-header">
+        <div class="doc-header-text">
+          <h1 class="doc-name">داود صالح</h1>
+          <p class="doc-role">مهندس برمجيات · أدوات الذكاء الاصطناعي · أنظمة Serverless الخلفية · Node.js</p>
+          <div class="doc-contact">
+            <span>صنعاء، اليمن · متاح للعمل عن بُعد / الانتقال</span>
+            <a href="tel:+967777505208">+967 777 505 208</a>
+            <a href="mailto:eng.dawoodsaleh@gmail.com">eng.dawoodsaleh@gmail.com</a>
+            <a href="https://github.com/EngDawood" target="_blank" rel="noopener">github.com/EngDawood</a>
+            <a href="https://www.linkedin.com/in/dawood3/" target="_blank" rel="noopener">linkedin.com/in/dawood3</a>
+            <a href="https://x.com/dawo5d" target="_blank" rel="noopener">x.com/dawo5d</a>
+            <a href="https://t.me/Dawo5d" target="_blank" rel="noopener">t.me/Dawo5d</a>
+            <a href="http://engdawood.com" target="_blank" rel="noopener">engdawood.com</a>
+          </div>
+        </div>
+        <div class="doc-photo">
+          <img src="assets/profile-doc.png" alt="داود صالح" />
+        </div>
+      </header>
+
+      <h2 id="d-summary-ar" class="doc-section">نبذة</h2>
+      <p>مهندس برمجيات من اليمن، أبني أنظمة خلفية وبوتات تيليجرام وأدوات للذكاء الاصطناعي. يقودني فضولٌ عميق لفهم كيفية عمل الأشياء — من بنية الـ Serverless إلى تكاملات بروتوكول MCP.</p>
+      <p>أركّز على معماريات Serverless فوق Cloudflare Workers، وعلى بناء أدوات يستطيع الذكاء الاصطناعي الوصول إليها مباشرة، وعلى تصميم واجهات برمجية نظيفة. ولديّ خبرة أيضًا في كتابة الأبحاث الأكاديمية وتصميم العروض التقديمية والتدريس عن بُعد في علوم الحاسوب والرياضيات.</p>
+
+      <h2 id="d-projects-ar" class="doc-section">مشاريع مختارة</h2>
+
+      <h3 class="doc-item-title">خادم MCP للبحث الأكاديمي العربي</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/arabic-scholar-mcp-server" target="_blank" rel="noopener">github.com/EngDawood/arabic-scholar-mcp-server</a></p>
+      <ul class="doc-bullets">
+        <li>خادم MCP مفتوح يتيح لنماذج الذكاء الاصطناعي البحث في أكثر من 4 ملايين سجل أكاديمي عربي من قواعد المنظومة وASJP وSHAMAA.</li>
+        <li>منشور كأداة مفتوحة لخدمة مجتمع البحث العلمي العربي.</li>
+      </ul>
+
+      <h3 class="doc-item-title">بوت وظائف اليمن — @hr_yemen</h3>
+      <p class="doc-item-meta"><a href="https://t.me/hr_yemen" target="_blank" rel="noopener">t.me/hr_yemen</a><span class="sep">·</span><a href="https://t.me/Yemenhrbot" target="_blank" rel="noopener">t.me/Yemenhrbot</a></p>
+      <ul class="doc-bullets">
+        <li>خدمة مبنية على Cloudflare Workers تجمع إعلانات الوظائف في اليمن من 6 مصادر (منها ReliefWeb وYemen HR وEOI Yemen) مع ترجمة عربية بالذكاء الاصطناعي عبر Workers AI.</li>
+        <li>تنشر تلقائيًا في قناة <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> على تيليجرام — تخدم حاليًا أكثر من <b>4,900 مشترك</b>، مع تحكّم إداري عبر بوت <a href="https://t.me/Yemenhrbot" target="_blank" rel="noopener">@Yemenhrbot</a> يتضمّن 13 أمرًا.</li>
+        <li>نظام مصادر قائم على الإضافات (RSS / Scraper / API)، وكشف المكررات عبر KV، وأرشفة في D1 عبر 4 جداول، وواجهة REST API مكوّنة من 12 مسارًا، وملخّص يومي الساعة 11 مساءً UTC، ونشر تلقائي عبر Cloudflare عند كل push.</li>
+      </ul>
+
+      <h3 class="doc-item-title">بوت تيليجرام متعدد المنصّات لتحميل الوسائط</h3>
+      <p class="doc-item-meta"><a href="https://t.me/download_media_4bot" target="_blank" rel="noopener">t.me/download_media_4bot</a><span class="sep">·</span><a href="https://github.com/EngDawood/download-media" target="_blank" rel="noopener">github.com/EngDawood/download-media</a></p>
+      <ul class="doc-bullets">
+        <li>بوت تيليجرام يدعم التحميل من أكثر من 9 منصّات، منشور على Cloudflare Workers — متاح على <a href="https://t.me/download_media_4bot" target="_blank" rel="noopener">@download_media_4bot</a>.</li>
+        <li>التقنيات: Node.js وTypeScript وHono وCloudflare Workers، مع تخزين KV وأتمتة Webhook وجدولة Cron.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Mistral OCR</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/mistral-ocr" target="_blank" rel="noopener">github.com/EngDawood/mistral-ocr</a></p>
+      <ul class="doc-bullets">
+        <li>سكربتات بايثون للتعرّف الضوئي على نصوص PDF، وتفريغ الصوت، ومعالجة الوثائق باستخدام Mistral AI API.</li>
+        <li>تشمل: المعالجة الدفعية، وتتبّع التكلفة، ودعمًا متعدد اللغات (بما فيها العربية).</li>
+      </ul>
+
+      <h2 id="d-experience-ar" class="doc-section">الخبرات العملية</h2>
+
+      <h3 class="doc-item-title">مهندس برمجيات — عمل حر</h3>
+      <p class="doc-item-meta">عن بُعد<span class="sep">·</span>أبريل 2023 – حتى الآن</p>
+      <ul class="doc-bullets">
+        <li>صمّمت ونشرت بوت تيليجرام لتحميل الوسائط من أكثر من 9 منصّات باستخدام (Node.js وHono وCloudflare Workers) مع تتبّع إحصائي للاستخدام.</li>
+        <li>طوّرت خادم MCP للبحث الأكاديمي العربي بربط أكثر من 4 ملايين سجل من قواعد المنظومة وASJP وSHAMAA — منشورًا كمصدر مفتوح.</li>
+        <li>هندست أنظمة خلفية Serverless على Cloudflare Workers مع تخزين KV وأتمتة Webhook وجدولة Cron.</li>
+        <li>بنيت وصُنت خدمات Node.js خلفية بتركيز على الأداء والموثوقية وتصميم واجهات API نظيفة.</li>
+        <li>سلّمت مشاريع تطوير ويب متكاملة وأتمتة بايثون وتوثيقًا تقنيًا لعملاء دوليين.</li>
+      </ul>
+
+      <h3 class="doc-item-title">معيد جامعي — جامعة حجة</h3>
+      <p class="doc-item-meta">حجة، اليمن<span class="sep">·</span>أكتوبر 2022 – أبريل 2023</p>
+      <ul class="doc-bullets">
+        <li>درّست مادة البرمجة الكائنية (Java) لأكثر من 60 طالبًا في المستويين الثاني والثالث.</li>
+        <li>صمّمت جلسات معملية تطبيقية تترجم المفاهيم البرمجية إلى تمارين عملية.</li>
+        <li>قيّمت مشاريع الطلاب وراجعت أكوادهم البرمجية مراجعةً تقنية.</li>
+        <li>أرشدت الطلاب فرديًا في تصحيح الأخطاء وتصميم البرمجيات وتسليم المشاريع الأكاديمية.</li>
+      </ul>
+
+      <h3 class="doc-item-title">باحث أكاديمي ومصمم عروض تقديمية — عمل حر</h3>
+      <p class="doc-item-meta">Upwork وFiverr · عن بُعد<span class="sep">·</span>2020 – حتى الآن</p>
+      <ul class="doc-bullets">
+        <li>كتبت وحرّرت أوراقًا بحثية في تعلم الآلة وتحليل البيانات والأمن السيبراني.</li>
+        <li>ترجمت الأبحاث الأكاديمية بين العربية والإنجليزية بدقّة تقنية.</li>
+        <li>نسّقت الوثائق البحثية وفق معايير IEEE وAPA وElsevier باستخدام LaTeX وMicrosoft Word.</li>
+        <li>صمّمت أكثر من 70 عرضًا تقديميًا احترافيًا لمؤتمرات ومؤسسات أكاديمية (PowerPoint وCanva وPrezi).</li>
+        <li>حصلت على تقييم 5 نجوم من 92٪ من العملاء عبر أكثر من 70 مشروعًا.</li>
+        <li>شاركت في تأليف بحث منشور عن تطبيقات الذكاء الاصطناعي في الرعاية الصحية (Journal of Computer Science، 2023).</li>
+      </ul>
+
+      <h3 class="doc-item-title">مدرّس خاص عبر الإنترنت</h3>
+      <p class="doc-item-meta">عن بُعد — طلاب سعوديون ويمنيون<span class="sep">·</span>2020 – حتى الآن</p>
+      <ul class="doc-bullets">
+        <li>قدّمت دروسًا يومية لمجموعات من 10 إلى 15 طالبًا في علوم الحاسوب والرياضيات والإنجليزية والفيزياء وفق المنهج السعودي.</li>
+        <li>حقّقت تحسّنًا متوسطًا في درجات الاختبارات بنسبة 25٪ في صفوف الطلاب.</li>
+        <li>طوّرت خططًا دراسية تفاعلية وعروضًا توضيحية ووسائل بصرية مساعدة.</li>
+        <li>قدّمت الشرح بأسلوب ثنائي اللغة (العربية والإنجليزية).</li>
+        <li>حافظت على التزام كامل بالحضور مع مرونة في الجدولة.</li>
+      </ul>
+
+      <h3 class="doc-item-title">مساح ميداني — Moore Yemen</h3>
+      <p class="doc-item-meta">حجة، اليمن<span class="sep">·</span>يوليو 2021 – أغسطس 2021</p>
+      <ul class="doc-bullets">
+        <li>نفّذت مسوحات ميدانية وجمع بيانات لمشاريع تدقيق واستشارات.</li>
+        <li>أجريت زيارات تفقّدية وتوثيقًا للمواقع، وتعاونت مع فرق التدقيق في مشاريع العملاء.</li>
+      </ul>
+
+      <h3 class="doc-item-title">صرّاف حوالات — مؤسسة التيسير للصرافة والتحويلات</h3>
+      <p class="doc-item-meta">حجة، اليمن<span class="sep">·</span>نوفمبر 2018 – 2019</p>
+      <ul class="doc-bullets">
+        <li>تعاملت مع صرف العملات والحوالات المالية والعمليات النقدية اليومية.</li>
+        <li>قدّمت خدمة عملاء احترافية في بيئة مصرفية سريعة الإيقاع.</li>
+      </ul>
+
+      <h2 id="d-education-ar" class="doc-section">المؤهلات العلمية</h2>
+      <h3 class="doc-item-title">جامعة حجة — بكالوريوس علوم تطبيقية، تخصص علوم الحاسوب</h3>
+      <p class="doc-item-meta">حجة، اليمن<span class="sep">·</span>2016 – 2020</p>
+      <ul class="doc-bullets">
+        <li>تخرّجت بمرتبة الشرف (تقدير ممتاز) — 2019–2020.</li>
+        <li>التخصصات الفرعية: الذكاء الاصطناعي، تحليل البيانات، الأمن السيبراني.</li>
+        <li>أهم المقررات: هياكل البيانات والخوارزميات، قواعد البيانات، البرمجة الكائنية، هندسة البرمجيات، تقنيات الويب، نظم التشغيل، شبكات الحاسوب.</li>
+        <li>مشروع التخرّج: تطبيق مبني على البيانات بقاعدة بيانات علائقية مهيكلة.</li>
+      </ul>
+      <h3 class="doc-item-title">ثانوية الثورة (بنين) — الشهادة الثانوية العامة</h3>
+      <p class="doc-item-meta">حجة، اليمن<span class="sep">·</span>2014<span class="sep">·</span>تقدير ممتاز</p>
+
+      <h2 id="d-skills-ar" class="doc-section">المهارات التقنية</h2>
+      <div class="doc-skill-row"><strong>الأنظمة الخلفية والبنية التحتية</strong><span>Node.js, TypeScript, Python, Hono, Cloudflare Workers, KV Storage, Cron, Webhooks، تصميم REST API، نمط MVC، PHP / Laravel (قيد التعلم)، أنماط Serverless.</span></div>
+      <div class="doc-skill-row"><strong>الواجهات الأمامية</strong><span>React.js, Next.js (قيد التعلم), HTML5, CSS3, JavaScript (ES6+).</span></div>
+      <div class="doc-skill-row"><strong>قواعد البيانات</strong><span>MySQL, PostgreSQL، تحسين استعلامات SQL، تصميم المخطط، Redis (أساسيات).</span></div>
+      <div class="doc-skill-row"><strong>الذكاء الاصطناعي والأدوات</strong><span>تطوير خوادم MCP، وأتمتة بايثون باستخدام Pandas وNumPy وScikit-learn وTensorFlow، وMistral AI API، ودمج تدفّقات الذكاء الاصطناعي.</span></div>
+      <div class="doc-skill-row"><strong>DevOps والأدوات</strong><span>Git / GitHub, Linux CLI, Docker (أساسيات), مفاهيم CI/CD، أنماط التصميم (Repository, Factory, Observer)، LaTeX, MS Office, Canva, Prezi.</span></div>
+      <div class="doc-skill-row"><strong>المعمارية</strong><span>Clean Architecture، مبادئ SOLID، تعدد المستأجرين في SaaS، الميكروسيرفس (دراسة)، مبادئ اختبار الوحدات.</span></div>
+
+      <h2 id="d-certs-ar" class="doc-section">الشهادات</h2>
+      <div class="doc-cert-row"><span class="y">2023</span><span class="t"><b>تصور البيانات باستخدام بايثون</b> <span>— Udemy</span></span></div>
+      <div class="doc-cert-row"><span class="y">2022</span><span class="t"><b>شهادة الكتابة الأكاديمية</b> <span>— Coursera</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>تدريب المدربين (TOT)</b> <span>— إدراك × المجلس الدولي للمدربين المعتمدين</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>الإعداد المهني</b> <span>— إدراك × المجلس الثقافي البريطاني</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>الإنجليزية لبيئة العمل</b> <span>— إدراك × المجلس الثقافي البريطاني</span></span></div>
+
+      <h2 id="d-languages-ar" class="doc-section">اللغات</h2>
+      <div class="doc-lang-row"><strong>العربية</strong><span>اللغة الأم</span></div>
+      <div class="doc-lang-row"><strong>الإنجليزية</strong><span>متقدّم — C1 (كتابةً ومحادثة)</span></div>
+
+      <h2 id="d-accomplishments-ar" class="doc-section">الإنجازات</h2>
+      <ul class="doc-bullets">
+        <li>بناء خادم MCP يتيح حاليًا لنماذج الذكاء الاصطناعي الوصول إلى أكثر من 4 ملايين سجل أكاديمي عربي.</li>
+        <li>بوت وظائف اليمن يخدم أكثر من <b>4,900 مشترك</b> على تيليجرام في قناة <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> مع ترجمة عربية لإعلانات الوظائف من 6 مصادر بالذكاء الاصطناعي.</li>
+        <li>تقييم 5 نجوم من 92٪ من العملاء على Upwork وFiverr.</li>
+        <li>المشاركة في تأليف بحث منشور عن الذكاء الاصطناعي في الرعاية الصحية (Journal of Computer Science، 2023).</li>
+        <li>تصميم أكثر من 70 عرضًا تقديميًا بحثيًا اعتمدته مؤتمرات دولية وجامعات في الشرق الأوسط.</li>
+        <li>سلسلة إنفوجرافيك بيانية اعتُمدت في عدد من جامعات المنطقة.</li>
+        <li>الإشراف على أكثر من 30 طالبًا مع تحسّن قابل للقياس في الدرجات ورضا عالٍ من أولياء الأمور.</li>
+        <li>GitHub: 76 مستودعًا · 315 نجمة ممنوحة · Quickdraw · Pair Extraordinaire · Pull Shark ×2 · YOLO.</li>
+      </ul>
+
+    </article>
+  </div>
+</div>
+
+<script>
+  // ---- Theme toggle ----
+  const root = document.documentElement;
+  const body = document.body;
+  const STORE = 'dawood-cv';
+  const state = JSON.parse(localStorage.getItem(STORE) || '{}');
+  if (state.theme) root.setAttribute('data-theme', state.theme);
+  else if (window.matchMedia('(prefers-color-scheme: dark)').matches) root.setAttribute('data-theme', 'dark');
+  if (state.mode) body.setAttribute('data-mode', state.mode);
+  if (state.lang) body.setAttribute('data-lang', state.lang);
+
+  function persist() {
+    localStorage.setItem(STORE, JSON.stringify({
+      theme: root.getAttribute('data-theme'),
+      mode: body.getAttribute('data-mode'),
+      lang: body.getAttribute('data-lang')
+    }));
+  }
+  function refreshThemeIcons() {
+    const dark = root.getAttribute('data-theme') === 'dark';
+    document.getElementById('ic-sun').style.display = dark ? 'none' : 'block';
+    document.getElementById('ic-moon').style.display = dark ? 'block' : 'none';
+  }
+  function refreshModeBtns() {
+    const mode = body.getAttribute('data-mode');
+    document.getElementById('mode-short').classList.toggle('active', mode === 'short');
+    document.getElementById('mode-deep').classList.toggle('active', mode === 'deep');
+  }
+  function refreshLangBtns() {
+    const lang = body.getAttribute('data-lang') || 'en';
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+    document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+  }
+  refreshThemeIcons(); refreshModeBtns(); refreshLangBtns();
+
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const cur = root.getAttribute('data-theme');
+    root.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+    refreshThemeIcons(); persist();
+  });
+  document.getElementById('mode-short').addEventListener('click', () => {
+    body.setAttribute('data-mode', 'short'); refreshModeBtns(); persist();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    runAnimations();
+  });
+  document.getElementById('mode-deep').addEventListener('click', () => {
+    body.setAttribute('data-mode', 'deep'); refreshModeBtns(); persist();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  });
+  document.getElementById('lang-en').addEventListener('click', () => {
+    body.setAttribute('data-lang', 'en'); refreshLangBtns(); persist();
+    // recompute TOC targets when switching language
+    rebuildTocTargets(); updateToc();
+  });
+  document.getElementById('lang-ar').addEventListener('click', () => {
+    body.setAttribute('data-lang', 'ar'); refreshLangBtns(); persist();
+    rebuildTocTargets(); updateToc();
+  });
+
+  // ---- Typed roles ----
+  const roles = [
+    'building serverless backends on Cloudflare Workers',
+    'shipping AI-accessible MCP tools',
+    'writing clean APIs in Node.js + TypeScript',
+    'designing Telegram bots that actually scale',
+    'open-sourcing Arabic-language AI tooling'
+  ];
+  const typedEl = document.getElementById('typed');
+  let rIdx = 0, cIdx = 0, deleting = false;
+  function typeStep() {
+    if (!typedEl) return;
+    const word = roles[rIdx];
+    if (!deleting) {
+      cIdx++; typedEl.textContent = word.slice(0, cIdx);
+      if (cIdx === word.length) { deleting = true; return setTimeout(typeStep, 1800); }
+      setTimeout(typeStep, 32 + Math.random() * 30);
+    } else {
+      cIdx--; typedEl.textContent = word.slice(0, cIdx);
+      if (cIdx === 0) { deleting = false; rIdx = (rIdx + 1) % roles.length; return setTimeout(typeStep, 280); }
+      setTimeout(typeStep, 18);
+    }
+  }
+  typeStep();
+
+  // ---- Animated counters ----
+  function animateCounter(el) {
+    const target = parseFloat(el.getAttribute('data-counter'));
+    const duration = 1400;
+    const start = performance.now();
+    const isFloat = !Number.isInteger(target);
+    function frame(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const v = target * eased;
+      el.textContent = isFloat ? v.toFixed(1) : Math.floor(v).toLocaleString();
+      if (t < 1) requestAnimationFrame(frame);
+      else el.textContent = isFloat ? target.toFixed(1) : target.toLocaleString();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // ---- IntersectionObserver reveals + counters ----
+  function runAnimations() {
+    const reveals = document.querySelectorAll('.short .reveal:not(.in)');
+    const counters = document.querySelectorAll('.short [data-counter]');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    reveals.forEach(r => io.observe(r));
+
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animateCounter(e.target); cio.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(c => cio.observe(c));
+  }
+  runAnimations();
+
+  // ---- Deep mode TOC active state (language-aware) ----
+  let tocLinks = [], tocTargets = [];
+  function rebuildTocTargets() {
+    const lang = body.getAttribute('data-lang') || 'en';
+    const aside = document.querySelector('.deep-toc[data-lang="' + lang + '"]');
+    tocLinks = aside ? [...aside.querySelectorAll('a')] : [];
+    tocTargets = tocLinks.map(a => document.querySelector(a.getAttribute('href')));
+  }
+  function updateToc() {
+    if (body.getAttribute('data-mode') !== 'deep') return;
+    const y = window.scrollY + 140;
+    let activeIdx = 0;
+    tocTargets.forEach((t, i) => { if (t && t.offsetTop <= y) activeIdx = i; });
+    tocLinks.forEach((a, i) => a.classList.toggle('active', i === activeIdx));
+  }
+  rebuildTocTargets();
+  window.addEventListener('scroll', updateToc, { passive: true });
+  updateToc();
+</script>
+</body>
+</html>
