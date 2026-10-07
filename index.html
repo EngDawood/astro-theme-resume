@@ -351,6 +351,24 @@
   .mini-card .project-links { margin-top: auto; padding-top: 4px; }
 
   /* Project visuals (illustrative mockups) */
+  .pv-site { background: #f4f1ea; display: flex; flex-direction: column; font-size: 12px; color: #1f2937; }
+  .pv-site .bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #e7e2d8; }
+  .pv-site .bar .dot { width: 8px; height: 8px; border-radius: 50%; background: #c9c2b4; }
+  .pv-site .bar .url { margin-left: 10px; flex: 1; background: #fff; border-radius: 6px; padding: 3px 10px; font-family: var(--mono); font-size: 11px; color: #6b7280; }
+  .pv-site .page { flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 14px 16px; font-family: var(--arabic); min-height: 0; overflow: hidden; }
+  .pv-site .nav { display: flex; align-items: center; gap: 12px; font-size: 12px; color: #4b5563; }
+  .pv-site .nav b { color: #0f5132; font-size: 14px; margin-left: auto; }
+  .pv-site .nav .lang { font-family: var(--mono); font-size: 10px; border: 1px solid #c9c2b4; border-radius: 4px; padding: 1px 6px; }
+  .pv-site .hero { background: linear-gradient(135deg, #0f5132, #198754); color: #fff; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 7px; }
+  .pv-site .hero .h { font-size: 17px; font-weight: 700; }
+  .pv-site .hero .l { height: 6px; border-radius: 3px; background: rgba(255,255,255,.35); }
+  .pv-site .hero .w80 { width: 80%; } .pv-site .hero .w60 { width: 60%; }
+  .pv-site .hero .btn { align-self: flex-start; background: #fff; color: #0f5132; border-radius: 6px; padding: 3px 12px; font-size: 12px; margin-top: 4px; }
+  .pv-site .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .pv-site .cards span { height: 34px; border-radius: 8px; background: #fff; border: 1px solid #e5e0d6; }
+  .pv-site .stats { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 10px 16px; border-top: 1px solid #e5e0d6; background: #fff; font-family: var(--mono); font-size: 11px; color: #6b7280; }
+  .pv-site .stats b { color: #0f5132; }
+  @media (max-width: 600px) { .pv-site .cards, .pv-site .nav span:not(.lang), .pv-site .hero .l, .pv-site .hero .btn { display: none; } .pv-site .page { padding: 10px 12px; gap: 8px; } }
   .pv-pipe { background: linear-gradient(135deg, #111827, #1f2937); padding: 24px; color: #e5e7eb; font-family: var(--mono); font-size: 12.5px; display: flex; flex-direction: column; gap: 14px; }
   .pv-pipe .row { display: flex; align-items: center; gap: 8px; }
   .pv-pipe .dot { width: 8px; height: 8px; border-radius: 50%; background: #475569; }
@@ -1082,6 +1100,31 @@
             </div>
           </div>
         </article>
+        <!-- Project 6: Tamkeen Institute site -->
+        <article class="project reverse reveal">
+          <div class="project-visual pv-site">
+            <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">tit-edu-sa.vercel.app</span></div>
+            <div class="page" dir="rtl" lang="ar">
+              <div class="nav"><b>معهد تمكين التقني</b><span>الرئيسية</span><span>البرامج التدريبية</span><span>تواصل معنا</span><span class="lang">EN</span></div>
+              <div class="hero">
+                <div class="h">تمكين الكوادر الوطنية لبناء المستقبل المهني</div>
+                <div class="l w80"></div><div class="l w60"></div>
+                <span class="btn">استكشف الدبلومات والبرامج</span>
+              </div>
+              <div class="cards"><span></span><span></span><span></span></div>
+            </div>
+            <div class="stats" dir="ltr"><span><b>9</b> pages × AR/EN</span><span><b>0</b> JS bundles</span><span>llms.txt · FAQ schema</span></div>
+          </div>
+          <div>
+            <div class="project-num">PROJECT / 06 · CLIENT</div>
+            <h3 class="project-title">Tamkeen Institute of Technology website</h3>
+            <p class="project-desc">The official website of a technical institute in Sakaka, Saudi Arabia: <b>9 pages in Arabic (RTL) and English</b>, built as a static Astro site with <b>no JavaScript bundle</b> and optimized WebP images. Includes schema.org FAQ markup, a sitemap, and an <b>llms.txt</b> index with a Markdown version of every page for AI search.</p>
+            <div class="project-chips">
+              <span class="chip">Astro</span><span class="chip">RTL &amp; i18n</span><span class="chip">SEO · Schema.org</span><span class="chip">llms.txt</span><span class="chip">Client work</span>
+            </div>
+            <a class="project-link" href="https://tit-edu-sa.vercel.app/contact/" target="_blank" rel="noopener">Visit site →</a>
+          </div>
+        </article>
       </div>
 
       <h3 class="mini-title reveal">More I've built.</h3>
@@ -1143,7 +1186,7 @@
               <li>Open-sourced <b>4 MCP servers</b> that give AI agents access to 4M+ Arabic research records, 18 academic sources, illustrations and document OCR.</li>
               <li>Built <b>Yemen Jobs Bot</b>, which grew <a href="https://t.me/hr_yemen" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line)">@hr_yemen</a> to <b>5,600+ subscribers</b> with AI-translated job posts from 6 sources.</li>
               <li>Shipped Telegram bots on Cloudflare Workers: a 10-platform media downloader, a video captioning pipeline and an RSS bridge with a React dashboard.</li>
-              <li>Built bilingual Arabic/English (RTL) front-ends with Astro, React and MapLibre, and published an Arabic font package on npm.</li>
+              <li>Built bilingual Arabic/English (RTL) front-ends with Astro, React and MapLibre, including the website of a Saudi technical institute, and published an Arabic font package on npm.</li>
             </ul>
           </div>
         </div>
@@ -1395,6 +1438,13 @@
         <li>React + Tailwind admin dashboard served from the Worker; D1, KV and Queues; MCP server on a Durable Object.</li>
       </ul>
 
+      <h3 class="doc-item-title">Tamkeen Institute of Technology Website (client)</h3>
+      <p class="doc-item-meta"><a href="https://tit-edu-sa.vercel.app/contact/" target="_blank" rel="noopener">tit-edu-sa.vercel.app</a></p>
+      <ul class="doc-bullets">
+        <li>Official website for a technical institute in Sakaka, Saudi Arabia: 9 pages in Arabic (RTL, primary) and English, built from the client's brand guide and content brief.</li>
+        <li>Static Astro build with no JavaScript bundle and optimized WebP images; schema.org FAQ markup, sitemap, and an llms.txt index with a Markdown version of every page.</li>
+      </ul>
+
       <h3 class="doc-item-title">Bilingual Portfolio on EmDash CMS</h3>
       <p class="doc-item-meta"><a href="https://engdawood.com" target="_blank" rel="noopener">engdawood.com</a><span class="sep">·</span><a href="https://github.com/EngDawood/modern-emdash-cms" target="_blank" rel="noopener">github.com/EngDawood/modern-emdash-cms</a></p>
       <ul class="doc-bullets">
@@ -1424,7 +1474,7 @@
         <li>Open-sourced 4 MCP servers (Arabic Scholar, Paper Search, Storyset, Mistral OCR) that give AI agents access to 4M+ Arabic research records, 18 academic sources, illustrations and document OCR.</li>
         <li>Built Yemen Jobs Bot, a Cloudflare Worker that collects 6 job sources with AI Arabic translation, growing the @hr_yemen channel to 5,600+ subscribers.</li>
         <li>Built Telegram bots on Cloudflare Workers: a 10-platform media downloader, a video captioning pipeline (Workflows, Containers, ffmpeg) and an RSS bridge with a React admin dashboard.</li>
-        <li>Built bilingual Arabic/English (RTL) front-ends with Astro, React and MapLibre GL; published an Arabic font package on npm.</li>
+        <li>Built bilingual Arabic/English (RTL) front-ends with Astro, React and MapLibre GL, including the official website of a Saudi technical institute; published an Arabic font package on npm.</li>
         <li>Delivered full-stack development, Python automation and technical documentation projects for international clients.</li>
       </ul>
 
@@ -1594,6 +1644,13 @@
         <li>لوحة تحكم بـ React وTailwind تُقدَّم من الخدمة نفسها، مع D1 وKV وQueues، وخادم MCP على Durable Object.</li>
       </ul>
 
+      <h3 class="doc-item-title">موقع معهد تمكين التقني (مشروع لعميل)</h3>
+      <p class="doc-item-meta"><a href="https://tit-edu-sa.vercel.app/contact/" target="_blank" rel="noopener">tit-edu-sa.vercel.app</a></p>
+      <ul class="doc-bullets">
+        <li>الموقع الرسمي لمعهد تقني في سكاكا بالمملكة العربية السعودية: 9 صفحات بالعربية (من اليمين لليسار، اللغة الأساسية) والإنجليزية، مبني على دليل الهوية ومحتوى العميل.</li>
+        <li>موقع Astro ثابت دون أي حزمة JavaScript وبصور WebP محسّنة، مع ترميز schema.org للأسئلة الشائعة، وخريطة موقع، وفهرس llms.txt بنسخة Markdown لكل صفحة.</li>
+      </ul>
+
       <h3 class="doc-item-title">موقع شخصي ثنائي اللغة على EmDash CMS</h3>
       <p class="doc-item-meta"><a href="https://engdawood.com" target="_blank" rel="noopener">engdawood.com</a><span class="sep">·</span><a href="https://github.com/EngDawood/modern-emdash-cms" target="_blank" rel="noopener">github.com/EngDawood/modern-emdash-cms</a></p>
       <ul class="doc-bullets">
@@ -1623,7 +1680,7 @@
         <li>نشرت 4 خوادم MCP مفتوحة المصدر (البحث الأكاديمي العربي، البحث في الأوراق العلمية، Storyset، Mistral OCR) تمنح وكلاء الذكاء الاصطناعي وصولًا إلى أكثر من 4 ملايين سجل بحثي عربي و18 مصدرًا أكاديميًا والرسومات والتعرّف الضوئي على المستندات.</li>
         <li>بنيت بوت وظائف اليمن على Cloudflare Workers لجمع الوظائف من 6 مصادر مع ترجمة عربية بالذكاء الاصطناعي، ونمت قناة @hr_yemen إلى أكثر من 5,600 مشترك.</li>
         <li>بنيت بوتات تيليجرام على Cloudflare Workers: محمّل وسائط من 10 منصّات، وخط معالجة لترجمة الفيديو (Workflows وContainers وffmpeg)، وبوت RSS مع لوحة تحكم بـ React.</li>
-        <li>بنيت واجهات أمامية ثنائية اللغة (عربية وإنجليزية) باستخدام Astro وReact وMapLibre GL، ونشرت حزمة خطوط عربية على npm.</li>
+        <li>بنيت واجهات أمامية ثنائية اللغة (عربية وإنجليزية) باستخدام Astro وReact وMapLibre GL، منها الموقع الرسمي لمعهد تقني سعودي، ونشرت حزمة خطوط عربية على npm.</li>
         <li>سلّمت مشاريع تطوير ويب متكاملة وأتمتة بايثون وتوثيقًا تقنيًا لعملاء دوليين.</li>
       </ul>
 
