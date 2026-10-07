@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Dawood Saleh — Software Engineer</title>
-<meta name="description" content="Software Engineer · AI Tooling · Serverless Backends · Node.js. Building backend systems, Telegram bots, and AI tooling from Sana'a, Yemen." />
+<title>Dawood Saleh · Software Engineer</title>
+<meta name="description" content="Software Engineer · AI Tooling &amp; MCP Servers · Front-End Developer. Building MCP servers, Telegram bots, and bilingual Arabic/English interfaces on Cloudflare, from Sana'a, Yemen." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet" />
@@ -331,7 +331,39 @@
   .project-link:hover { gap: 12px; }
   .project-links { display: flex; flex-wrap: wrap; gap: 22px; row-gap: 10px; align-items: center; }
 
+  /* Secondary project cards */
+  .mini-title {
+    font-family: var(--serif); font-size: clamp(26px, 3vw, 34px);
+    margin: 72px 0 24px; font-weight: 400; letter-spacing: -.02em;
+  }
+  .mini-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  @media (max-width: 760px) { .mini-grid { grid-template-columns: 1fr; } }
+  .mini-card {
+    padding: 26px; border: 1px solid var(--line); border-radius: 14px;
+    background: var(--card);
+    display: flex; flex-direction: column; gap: 12px;
+    transition: transform .3s, border-color .3s;
+  }
+  .mini-card:hover { transform: translateY(-3px); border-color: color-mix(in oklab, var(--accent) 40%, var(--line)); }
+  .mini-card h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.15; margin: 0; }
+  .mini-card p { color: var(--muted); font-size: 15px; margin: 0; }
+  .mini-card .project-chips { margin: 0; }
+  .mini-card .project-links { margin-top: auto; padding-top: 4px; }
+
   /* Project visuals (illustrative mockups) */
+  .pv-pipe { background: linear-gradient(135deg, #111827, #1f2937); padding: 24px; color: #e5e7eb; font-family: var(--mono); font-size: 12.5px; display: flex; flex-direction: column; gap: 14px; }
+  .pv-pipe .row { display: flex; align-items: center; gap: 8px; }
+  .pv-pipe .dot { width: 8px; height: 8px; border-radius: 50%; background: #475569; }
+  .pv-pipe .dot.g { background: #34d399; box-shadow: 0 0 8px #34d399; }
+  .pv-pipe .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pv-pipe .step { display: flex; align-items: center; padding: 7px 10px; border: 1px solid #374151; border-radius: 6px; }
+  .pv-pipe .step .st { margin-left: auto; color: #34d399; }
+  .pv-pipe .step.run { border-color: #fbbf24; }
+  .pv-pipe .step.run .st { color: #fbbf24; }
+  .pv-pipe .step.wait { opacity: .5; }
+  .pv-pipe .step.wait .st { color: #9ca3af; }
+  @media (max-width: 600px) { .pv-pipe { padding: 18px; gap: 10px; } .pv-pipe .step { padding: 5px 9px; } }
+  .pv-pipe .cap { margin-top: auto; align-self: center; background: rgba(0,0,0,.75); color: #fff; padding: 6px 14px; border-radius: 4px; font-family: var(--arabic); font-size: 16px; direction: rtl; }
   .pv-mcp { background: linear-gradient(135deg, #0f172a, #1e293b); padding: 24px; color: #e2e8f0; font-family: var(--mono); font-size: 12.5px; }
   .pv-mcp .row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
   .pv-mcp .dot { width: 8px; height: 8px; border-radius: 50%; background: #475569; }
@@ -359,6 +391,14 @@
   .pv-bot .msg.in { background: #fff; color: #111; border-bottom-left-radius: 4px; align-self: flex-start; font-family: var(--mono); font-size: 12.5px; }
   .pv-bot .msg.out { background: #effdde; color: #111; border-bottom-right-radius: 4px; align-self: flex-end; }
   .pv-bot .msg .meta { display: block; font-size: 10px; color: #6b8e23; margin-top: 4px; }
+  .pv-bot .pv-bot-header { position: relative; z-index: 1; flex: 0 0 auto; }
+  .pv-bot .pv-bot-thread { overflow: hidden; }
+  @media (max-width: 600px) {
+    .pv-bot .pv-bot-thread { padding: 10px 12px; gap: 6px; }
+    .pv-bot .msg { padding: 6px 10px; font-size: 12px; }
+    .pv-bot .msg.in { font-size: 11.5px; }
+    .pv-bot .msg .meta { margin-top: 2px; }
+  }
 
   .pv-ocr { background: var(--card); display: grid; grid-template-columns: 1fr 1fr; }
   .pv-ocr .side { padding: 22px; }
@@ -868,11 +908,11 @@
       </div>
       <div class="about-grid">
         <p class="lead reveal" style="--d:80ms">
-          I build serverless backends, MCP servers, AI tooling, and Telegram bots — driven by a deep fascination with how things work, from edge runtimes to protocol integrations.
+          I build MCP servers that give AI agents real data, Telegram bots that thousands of people use, and bilingual Arabic/English interfaces, all running on Cloudflare's edge.
         </p>
         <div class="reveal" style="--d:160ms">
-          <p>Based in Sana'a, Yemen and working remotely with international clients since 2020. My focus is on clean API design, AI-accessible tooling, and serverless architectures on Cloudflare Workers.</p>
-          <p class="muted">I also write research, design presentations, and tutor CS &amp; Mathematics in Arabic and English.</p>
+          <p>Based in Sana'a, Yemen and working remotely with international clients since 2020. I care about clean APIs, tools that AI agents can actually use, and interfaces that work as well right-to-left as left-to-right.</p>
+          <p class="muted">I also write and edit academic research and tutor CS &amp; Mathematics in Arabic and English.</p>
         </div>
       </div>
     </div>
@@ -884,10 +924,10 @@
       <div class="section-head reveal">
         <span class="section-tag">02 · Featured work</span>
       </div>
-      <h2 class="section-title reveal" style="--d:80ms">Four things I've shipped recently.</h2>
+      <h2 class="section-title reveal" style="--d:80ms">What I've shipped recently.</h2>
       <div style="margin-top:48px;">
 
-        <!-- Project 1: MCP -->
+        <!-- Project 1: Arabic Scholar MCP -->
         <article class="project reveal">
           <div class="project-visual pv-mcp">
             <div class="row"><span class="dot g"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:auto; opacity:.5">mcp · arabic-scholar</span></div>
@@ -905,51 +945,78 @@
           </div>
           <div>
             <div class="project-num">PROJECT / 01</div>
-            <h3 class="project-title">Arabic Scholar — MCP Server</h3>
-            <p class="project-desc">An open MCP (Model Context Protocol) server giving AI models programmatic access to <b>4M+ Arabic academic records</b> from Mandumah, ASJP, and SHAMAA. Built to close the gap in Arabic-language AI tooling for research.</p>
+            <h3 class="project-title">Arabic Scholar MCP Server</h3>
+            <p class="project-desc">An open MCP (Model Context Protocol) server that lets AI models search <b>4M+ Arabic academic records</b> from Mandumah, ASJP, and SHAMAA. I built it because Arabic research was missing from AI tooling.</p>
             <div class="project-chips">
-              <span class="chip">MCP Protocol</span><span class="chip">Node.js</span><span class="chip">TypeScript</span><span class="chip">Open Source</span>
+              <span class="chip">MCP</span><span class="chip">Node.js</span><span class="chip">TypeScript</span><span class="chip">Open Source</span>
             </div>
             <a class="project-link" href="https://github.com/EngDawood/arabic-scholar-mcp-server" target="_blank" rel="noopener">View on GitHub →</a>
           </div>
         </article>
 
-        <!-- Project 2: Yemen Jobs Bot -->
+        <!-- Project 2: MCP servers -->
         <article class="project reverse reveal">
+          <div class="project-visual pv-mcp">
+            <div class="row"><span class="dot g"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:auto; opacity:.5">claude · mcp list</span></div>
+            <div class="req">$ claude mcp add --transport http storyset \</div>
+            <div class="req" style="padding-left:14px">https://storyset-mcp.engdawood.com/mcp</div>
+            <div style="margin-top:12px; line-height:1.9">
+              <span class="ok">✓</span> <span class="key">paper-search</span>  <span class="val">23 tools</span><br/>
+              <span class="ok">✓</span> <span class="key">storyset</span>  <span class="val">6 tools</span><br/>
+              <span class="ok">✓</span> <span class="key">mistral-ocr</span>  <span class="val">6 tools</span> <span style="opacity:.5">· npm</span>
+            </div>
+            <div class="count">
+              <span class="muted">academic sources, no API key</span>
+              <strong><span data-counter="18">0</span></strong>
+            </div>
+          </div>
+          <div>
+            <div class="project-num">PROJECT / 02</div>
+            <h3 class="project-title">More MCP servers for AI agents</h3>
+            <p class="project-desc"><b>Paper Search</b> searches 18 academic sources (arXiv, PubMed, Crossref, DBLP, OpenReview and more) from Cloudflare Workers. <b>Storyset</b> is a free public remote MCP for finding and recoloring illustrations. <b>Mistral OCR</b> is an MCP server and CLI on npm for OCR, tables and audio transcription.</p>
+            <div class="project-chips">
+              <span class="chip">MCP SDK</span><span class="chip">Agents SDK</span><span class="chip">Durable Objects</span><span class="chip">Mistral AI</span><span class="chip">npm</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/EngDawood/paper-search-mcp-server" target="_blank" rel="noopener">Paper Search →</a>
+              <a class="project-link" href="https://github.com/EngDawood/MCP-STORYSET" target="_blank" rel="noopener">Storyset →</a>
+              <a class="project-link" href="https://www.npmjs.com/package/mcp-mistral-ocr" target="_blank" rel="noopener">Mistral OCR →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Yemen Jobs Bot -->
+        <article class="project reveal">
           <div class="project-visual pv-channel">
             <div class="ch-head">
               <div class="ch-avatar" aria-hidden="true"></div>
               <div class="ch-meta">
-                <span class="ch-name">وظائف اليمن — Yemen HR <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.5 9 L22 9 L16 13.5 L18.5 21 L12 16.5 L5.5 21 L8 13.5 L2 9 L9.5 9 Z" stroke="none"/></svg></span>
+                <span class="ch-name">وظائف اليمن · Yemen HR <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.5 9 L22 9 L16 13.5 L18.5 21 L12 16.5 L5.5 21 L8 13.5 L2 9 L9.5 9 Z" stroke="none"/></svg></span>
                 <span class="ch-sub">@hr_yemen · channel</span>
               </div>
-              <span class="ch-subs-pill">4.9K subs</span>
+              <span class="ch-subs-pill">5.6K subs</span>
             </div>
             <div class="ch-body">
               <div class="ch-post">
-                <div class="ch-title">مهندس برمجيات — صنعاء</div>
+                <div class="ch-title">مهندس برمجيات · صنعاء</div>
                 <div class="ch-row"><b>الجهة:</b><span>ReliefWeb · UNDP</span></div>
                 <div class="ch-row"><b>الموقع:</b><span>صنعاء · حضوري</span></div>
                 <div class="ch-tags">#yemenhr  #وظائف  #UNDP</div>
                 <div class="ch-foot">
                   <span>auto-translated · qwen3</span>
-                  <span style="margin-left:auto" class="eye">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
-                    2.1K
-                  </span>
                 </div>
               </div>
             </div>
             <div class="ch-stats">
-              <div class="ch-stat"><span class="n"><span data-counter="4900">0</span></span><span class="k">subscribers</span></div>
+              <div class="ch-stat"><span class="n"><span data-counter="5600">0</span></span><span class="k">subscribers</span></div>
               <div class="ch-stat"><span class="n">6</span><span class="k">job sources</span></div>
               <div class="ch-stat"><span class="n">1<span style="font-family:var(--mono); font-size:12px; vertical-align:6px">h</span></span><span class="k">cron cadence</span></div>
             </div>
           </div>
           <div>
-            <div class="project-num">PROJECT / 02</div>
-            <h3 class="project-title">Yemen Jobs Bot — <span class="mono" style="font-size:.55em; vertical-align:.35em; color:var(--muted)">@hr_yemen</span></h3>
-            <p class="project-desc">A Cloudflare Worker that aggregates Yemen job listings from <b>6 sources</b> (ReliefWeb, Yemen HR, EOI, and more), <b>AI-translates them to Arabic</b> via Workers AI, and posts to the <b>@hr_yemen</b> Telegram channel — now serving <b>4.9K+ subscribers</b>. Built on a plugin system (RSS / scraper / API), with KV dedup, D1 archive, 13 admin commands, and 12 REST endpoints.</p>
+            <div class="project-num">PROJECT / 03</div>
+            <h3 class="project-title">Yemen Jobs Bot <span class="mono" style="font-size:.55em; vertical-align:.35em; color:var(--muted)">@hr_yemen</span></h3>
+            <p class="project-desc">A Cloudflare Worker that collects Yemen job listings from <b>6 sources</b> (ReliefWeb, Yemen HR, EOI and more), <b>translates them to Arabic</b> with Workers AI, and posts them to the <b>@hr_yemen</b> Telegram channel, which now has <b>5,600+ subscribers</b>. Plugin-based sources (RSS / scraper / API), KV dedup, D1 archive, 13 admin commands and 12 REST endpoints.</p>
             <div class="project-chips">
               <span class="chip">Cloudflare Workers</span><span class="chip">Workers AI</span><span class="chip">D1 + KV</span><span class="chip">TypeScript</span><span class="chip">Telegram</span>
             </div>
@@ -960,7 +1027,32 @@
           </div>
         </article>
 
-        <!-- Project 3: Telegram bot -->
+        <!-- Project 4: Video Caption -->
+        <article class="project reverse reveal">
+          <div class="project-visual pv-pipe">
+            <div class="row"><span class="dot g"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:auto; opacity:.5">workflow · video-caption</span></div>
+            <div class="steps">
+              <div class="step">fetch<span class="st">✓</span></div>
+              <div class="step">audio<span class="st">✓</span></div>
+              <div class="step">transcribe<span class="st">✓</span></div>
+              <div class="step">translate<span class="st">✓</span></div>
+              <div class="step run">burn<span class="st">●</span></div>
+              <div class="step wait">deliver<span class="st">○</span></div>
+            </div>
+            <div class="cap">الترجمة تظهر هنا على الفيديو</div>
+          </div>
+          <div>
+            <div class="project-num">PROJECT / 04</div>
+            <h3 class="project-title">Video Caption Bot</h3>
+            <p class="project-desc">Send a video or a social link to this Telegram bot and it <b>transcribes the speech, translates it, and burns the captions</b> back into the video. It runs as a durable pipeline on Cloudflare Workflows, so each stage retries on its own, and ffmpeg runs in Cloudflare Containers. Finished jobs can be re-run at four depths, from full redo to restyle only.</p>
+            <div class="project-chips">
+              <span class="chip">Workflows</span><span class="chip">Containers</span><span class="chip">ffmpeg</span><span class="chip">Speech-to-text</span><span class="chip">TypeScript</span>
+            </div>
+            <a class="project-link" href="https://github.com/EngDawood/video-caption" target="_blank" rel="noopener">View on GitHub →</a>
+          </div>
+        </article>
+
+        <!-- Project 5: Media bot -->
         <article class="project reveal">
           <div class="project-visual pv-bot">
             <div class="pv-bot-header">
@@ -971,18 +1063,18 @@
               </div>
             </div>
             <div class="pv-bot-thread">
-              <div class="msg in">/dl https://x.com/.../status/...</div>
-              <div class="msg out"><b>9 platforms supported</b> · processing media…<span class="meta">via cloudflare workers · 230ms</span></div>
-              <div class="msg in">/stats</div>
-              <div class="msg out">📊 24,810 downloads · 3,402 unique users<span class="meta">cron-aggregated · KV-backed</span></div>
+              <div class="msg in">/dl https://x.com/...</div>
+              <div class="msg out"><b>10 platforms</b> · processing…<span class="meta">via cloudflare workers</span></div>
+              <div class="msg in">POST /api/download</div>
+              <div class="msg out"><b>REST + MCP</b> ready<span class="meta">for apps and AI agents</span></div>
             </div>
           </div>
           <div>
-            <div class="project-num">PROJECT / 03</div>
+            <div class="project-num">PROJECT / 05</div>
             <h3 class="project-title">Multi-Platform Telegram Media Bot</h3>
-            <p class="project-desc">Telegram bot supporting downloads from <b>9+ platforms</b>, deployed on Cloudflare Workers with Hono, KV storage, webhook automation, and cron scheduling. Built for speed at the edge.</p>
+            <p class="project-desc">Downloads videos, photos and audio from <b>10 platforms</b> (TikTok, Instagram, X, YouTube, Facebook, Threads, SoundCloud, Spotify, Pinterest, GitHub) right inside Telegram. The same downloader is exposed as a <b>REST API and an MCP server</b>. Arabic and English UI, CI with CodeQL and release-please.</p>
             <div class="project-chips">
-              <span class="chip">Hono</span><span class="chip">Cloudflare Workers</span><span class="chip">KV / Cron</span><span class="chip">TypeScript</span>
+              <span class="chip">Hono</span><span class="chip">grammY</span><span class="chip">Cloudflare Workers</span><span class="chip">KV</span><span class="chip">MCP</span>
             </div>
             <div class="project-links">
               <a class="project-link" href="https://t.me/download_media_4bot" target="_blank" rel="noopener">Try on Telegram →</a>
@@ -990,38 +1082,45 @@
             </div>
           </div>
         </article>
+      </div>
 
-        <!-- Project 4: Mistral OCR -->
-        <article class="project reverse reveal">
-          <div class="project-visual pv-ocr">
-            <div class="side before">
-              <div class="tag">PDF · scan</div>
-              <div class="ar">المخطوطة الأصلية</div>
-              <div class="lines" style="margin-top:10px">
-                <span class="ln w90"></span><span class="ln w80"></span><span class="ln w60"></span><span class="ln w90"></span><span class="ln w40"></span>
-              </div>
-            </div>
-            <div class="side after">
-              <div class="tag" style="opacity:.4">JSON · OCR</div>
-              <div class="json" style="margin-top:10px; line-height:1.7">
-                <b>"lang"</b>: "ar",<br/>
-                <b>"pages"</b>: 184,<br/>
-                <b>"confidence"</b>: 0.97,<br/>
-                <b>"cost"</b>: "$0.42",<br/>
-                <b>"text"</b>: "…"
-              </div>
-            </div>
+      <h3 class="mini-title reveal">More I've built.</h3>
+      <div class="mini-grid">
+        <div class="mini-card reveal">
+          <h3>Bilingual Portfolio on EmDash CMS</h3>
+          <p>Astro SSR site on Cloudflare Workers, Arabic (RTL) by default with English (LTR). Content in D1, media in R2, and an MCP endpoint with 46 tools so AI agents can manage the site.</p>
+          <div class="project-chips"><span class="chip">Astro</span><span class="chip">React</span><span class="chip">i18n · RTL</span><span class="chip">MCP</span></div>
+          <div class="project-links">
+            <a class="project-link" href="https://engdawood.com" target="_blank" rel="noopener">Visit site →</a>
+            <a class="project-link" href="https://github.com/EngDawood/modern-emdash-cms" target="_blank" rel="noopener">GitHub →</a>
           </div>
-          <div>
-            <div class="project-num">PROJECT / 04</div>
-            <h3 class="project-title">Mistral OCR Pipeline</h3>
-            <p class="project-desc">Python scripts for PDF OCR, audio transcription, and document processing using the Mistral AI API. Batch processing, cost tracking, and full Arabic support — built for cleanly digitizing academic archives.</p>
-            <div class="project-chips">
-              <span class="chip">Python</span><span class="chip">Mistral AI</span><span class="chip">OCR</span><span class="chip">Arabic</span>
-            </div>
-            <a class="project-link" href="https://github.com/EngDawood/mistral-ocr" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+        <div class="mini-card reveal" style="--d:80ms">
+          <h3>Yemen Map · خريطة الغربة</h3>
+          <p>An Arabic-first spinning globe where Yemenis abroad draw a line from their home district to the city they live in. Bilingual search over ~900 cities, mobile bottom sheet, reduced-motion support.</p>
+          <div class="project-chips"><span class="chip">MapLibre GL</span><span class="chip">Vite</span><span class="chip">RTL</span><span class="chip">Workers + D1</span></div>
+          <div class="project-links">
+            <a class="project-link" href="https://yemen-map.dawod.workers.dev" target="_blank" rel="noopener">Open map →</a>
+            <a class="project-link" href="https://github.com/EngDawood/yemen-map" target="_blank" rel="noopener">GitHub →</a>
           </div>
-        </article>
+        </div>
+        <div class="mini-card reveal">
+          <h3>Thmanyah Font for the Web</h3>
+          <p>A community npm and CDN package for the Thmanyah Arabic font family: 3 families, 5 weights each, one CSS import. <b>2,300+ npm downloads</b> in the last month.</p>
+          <div class="project-chips"><span class="chip">CSS</span><span class="chip">Typography</span><span class="chip">npm</span><span class="chip">CDN</span></div>
+          <div class="project-links">
+            <a class="project-link" href="https://www.npmjs.com/package/@dawod/thmanyah-font-web" target="_blank" rel="noopener">npm →</a>
+            <a class="project-link" href="https://engdawood.github.io/thmanyah-font-web/examples/demo.html" target="_blank" rel="noopener">Demo →</a>
+          </div>
+        </div>
+        <div class="mini-card reveal" style="--d:80ms">
+          <h3>RSS Bridge Bot</h3>
+          <p>Turns Instagram, TikTok and any RSS feed into Telegram channel posts with AI Arabic summaries. Comes with a React + Tailwind admin dashboard and an MCP server on a Durable Object.</p>
+          <div class="project-chips"><span class="chip">React</span><span class="chip">Tailwind</span><span class="chip">D1 · Queues</span><span class="chip">MCP</span></div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/EngDawood/rss-cloudflare" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1036,21 +1135,21 @@
       <div class="timeline" style="margin-top:48px">
 
         <div class="job current reveal">
-          <div class="job-date">Apr 2023 — Now</div>
+          <div class="job-date">Apr 2023 · Now</div>
           <div>
             <h3 class="job-title">Software Engineer</h3>
             <p class="job-org">Self-Employed<span class="dot-sep">·</span>Remote</p>
             <ul class="job-points">
-              <li>Shipped <b>Yemen Jobs Bot</b> — a Cloudflare Worker aggregating 6 job sources with AI Arabic translation; now serving <b>4.9K+ subscribers</b> at <a href="https://t.me/hr_yemen" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line)">@hr_yemen</a>.</li>
-              <li>Shipped a multi-platform Telegram media bot on Cloudflare Workers — 9+ platforms, analytics, KV-backed.</li>
-              <li>Open-sourced the Arabic Scholar MCP server — 4M+ academic records exposed to AI agents.</li>
-              <li>Built serverless backends with webhook automation, cron jobs, and clean REST APIs for international clients.</li>
+              <li>Open-sourced <b>4 MCP servers</b> that give AI agents access to 4M+ Arabic research records, 18 academic sources, illustrations and document OCR.</li>
+              <li>Built <b>Yemen Jobs Bot</b>, which grew <a href="https://t.me/hr_yemen" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line)">@hr_yemen</a> to <b>5,600+ subscribers</b> with AI-translated job posts from 6 sources.</li>
+              <li>Shipped Telegram bots on Cloudflare Workers: a 10-platform media downloader, a video captioning pipeline and an RSS bridge with a React dashboard.</li>
+              <li>Built bilingual Arabic/English (RTL) front-ends with Astro, React and MapLibre, and published an Arabic font package on npm.</li>
             </ul>
           </div>
         </div>
 
         <div class="job reveal">
-          <div class="job-date">Oct 2022 — Apr 2023</div>
+          <div class="job-date">Oct 2022 · Apr 2023</div>
           <div>
             <h3 class="job-title">Teaching Assistant</h3>
             <p class="job-org">Hajjah University<span class="dot-sep">·</span>Hajjah, Yemen</p>
@@ -1062,32 +1161,30 @@
         </div>
 
         <div class="job reveal">
-          <div class="job-date">2020 — Now</div>
+          <div class="job-date">2020 · Now</div>
           <div>
             <h3 class="job-title">Academic Research Writer &amp; Presentation Designer</h3>
-            <p class="job-org">Freelance — Upwork &amp; Fiverr<span class="dot-sep">·</span>Remote</p>
+            <p class="job-org">Freelance, Upwork &amp; Fiverr<span class="dot-sep">·</span>Remote</p>
             <ul class="job-points">
-              <li>Authored and edited papers in ML, data analysis, and cybersecurity — IEEE / APA / Elsevier with LaTeX.</li>
-              <li>Designed 70+ presentations adopted by international conferences and Middle-East universities.</li>
-              <li>Co-authored published research on AI in healthcare (Journal of Computer Science, 2023).</li>
+              <li>Wrote and edited papers in ML, data analysis and cybersecurity, formatted to IEEE / APA / Elsevier with LaTeX.</li>
+              <li>Translated research between Arabic and English and designed conference and academic presentations.</li>
             </ul>
           </div>
         </div>
 
         <div class="job reveal">
-          <div class="job-date">2020 — Now</div>
+          <div class="job-date">2020 · Now</div>
           <div>
             <h3 class="job-title">Online Private Tutor</h3>
             <p class="job-org">Independent<span class="dot-sep">·</span>Saudi &amp; Yemeni Students</p>
             <ul class="job-points">
-              <li>Daily online tutoring in CS, Mathematics, English, and Physics — Saudi curriculum, bilingual delivery.</li>
-              <li>Average 25% exam-score lift across student cohorts.</li>
+              <li>Daily online tutoring in CS, Mathematics, English and Physics, following the Saudi curriculum, taught in Arabic and English.</li>
             </ul>
           </div>
         </div>
 
         <div class="job reveal">
-          <div class="job-date">Jul — Aug 2021</div>
+          <div class="job-date">Jul · Aug 2021</div>
           <div>
             <h3 class="job-title">Field Surveyor</h3>
             <p class="job-org">Moore Yemen<span class="dot-sep">·</span>Hajjah, Yemen</p>
@@ -1110,36 +1207,39 @@
       <h2 class="section-title reveal" style="--d:80ms">What I reach for.</h2>
       <div style="margin-top:48px">
         <div class="skill-block reveal">
-          <h3>Backend &amp; Infra</h3>
-          <div class="skill-list">
-            <span class="chip">Node.js</span><span class="chip">TypeScript</span><span class="chip">Python</span>
-            <span class="chip">Hono</span><span class="chip">Cloudflare Workers</span><span class="chip">KV · Cron · Webhooks</span>
-            <span class="chip">REST API Design</span><span class="chip">PHP / Laravel</span><span class="chip">Serverless</span>
-          </div>
-        </div>
-        <div class="skill-block reveal">
           <h3>AI &amp; Tooling</h3>
           <div class="skill-list">
-            <span class="chip">MCP Server Development</span><span class="chip">Mistral AI API</span>
+            <span class="chip">MCP Server Development</span><span class="chip">MCP TypeScript SDK</span><span class="chip">Cloudflare Agents SDK</span>
+            <span class="chip">Workers AI</span><span class="chip">Mistral AI API</span><span class="chip">Claude Code</span>
             <span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span><span class="chip">TensorFlow</span>
           </div>
         </div>
         <div class="skill-block reveal">
           <h3>Frontend</h3>
           <div class="skill-list">
-            <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript (ES6+)</span>
+            <span class="chip">React</span><span class="chip">Astro</span><span class="chip">TypeScript</span><span class="chip">JavaScript (ES6+)</span>
+            <span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">Tailwind CSS</span><span class="chip">Vite</span>
+            <span class="chip">MapLibre GL</span><span class="chip">RTL &amp; i18n</span><span class="chip">Next.js</span>
+          </div>
+        </div>
+        <div class="skill-block reveal">
+          <h3>Backend &amp; Infra</h3>
+          <div class="skill-list">
+            <span class="chip">Node.js</span><span class="chip">Python</span><span class="chip">Hono</span><span class="chip">grammY</span>
+            <span class="chip">Cloudflare Workers</span><span class="chip">D1 · KV · R2 · Queues</span><span class="chip">Durable Objects</span>
+            <span class="chip">Workflows · Containers</span><span class="chip">REST API Design</span><span class="chip">Telegram Bot API</span>
           </div>
         </div>
         <div class="skill-block reveal">
           <h3>Databases</h3>
           <div class="skill-list">
-            <span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">Schema Design</span><span class="chip">SQL Optimization</span><span class="chip">Redis</span>
+            <span class="chip">SQLite / D1</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">Schema Design</span><span class="chip">SQL Optimization</span><span class="chip">Redis</span>
           </div>
         </div>
         <div class="skill-block reveal">
           <h3>DevOps</h3>
           <div class="skill-list">
-            <span class="chip">Git / GitHub</span><span class="chip">Linux CLI</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">LaTeX</span>
+            <span class="chip">Git / GitHub Actions</span><span class="chip">CI/CD</span><span class="chip">npm Publishing</span><span class="chip">Wrangler</span><span class="chip">Docker</span><span class="chip">Linux CLI</span><span class="chip">LaTeX</span>
           </div>
         </div>
         <div class="skill-block reveal">
@@ -1152,38 +1252,10 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="section-tag">05 · Reviews</span>
-      </div>
-      <h2 class="section-title reveal" style="--d:80ms">Five-star feedback from 92% of clients.</h2>
-      <p class="muted reveal" style="--d:160ms; max-width:560px; margin-top:14px;">Aggregated from 70+ projects delivered on Upwork &amp; Fiverr since 2020.</p>
-      <div class="testimonial-grid" style="margin-top:48px">
-        <div class="quote-card reveal">
-          <div class="quote-stars">★★★★★</div>
-          <p class="quote-text">"Delivered on time, clean code, and patient with revisions. The kind of engineer you keep on speed-dial."</p>
-          <div class="quote-meta">Upwork client · Backend project</div>
-        </div>
-        <div class="quote-card reveal" style="--d:80ms">
-          <div class="quote-stars">★★★★★</div>
-          <p class="quote-text">"Research paper formatted to IEEE perfectly. Bilingual reviewer notes were a bonus I didn't expect."</p>
-          <div class="quote-meta">Fiverr client · Academic writing</div>
-        </div>
-        <div class="quote-card reveal" style="--d:160ms">
-          <div class="quote-stars">★★★★★</div>
-          <p class="quote-text">"Built our Cloudflare bot integration in days, not weeks. Documentation was as good as the code."</p>
-          <div class="quote-meta">Upwork client · Telegram automation</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA -->
   <section class="cta">
     <div class="container">
-      <h2 class="reveal">Have a backend problem?<br/><em>Let's make it boring.</em></h2>
+      <h2 class="reveal">Need an MCP server or a bilingual front-end?<br/><em>Let's make it boring.</em></h2>
       <p class="muted reveal" style="--d:80ms; max-width:560px; margin: 0 auto 32px;">Open to remote contracts, full-time roles, and AI-tooling collaborations. Fast reply within 24 hours.</p>
       <a class="cta-mail reveal" style="--d:160ms" href="mailto:eng.dawoodsaleh@gmail.com">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
@@ -1198,9 +1270,9 @@
       <div class="social">
         <a href="https://github.com/EngDawood" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/dawood3/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://x.com/dawo5d" target="_blank" rel="noopener">X</a>
+        <a href="https://x.com/dawoodSaleh12" target="_blank" rel="noopener">X</a>
         <a href="https://t.me/Dawo5d" target="_blank" rel="noopener">Telegram</a>
-        <a href="http://engdawood.com" target="_blank" rel="noopener">engdawood.com</a>
+        <a href="https://engdawood.com" target="_blank" rel="noopener">engdawood.com</a>
       </div>
     </div>
   </footer>
@@ -1243,16 +1315,16 @@
       <header class="doc-header">
         <div class="doc-header-text">
           <h1 class="doc-name">Dawood Saleh</h1>
-          <p class="doc-role">Software Engineer · AI Tooling · Serverless Backends · Node.js</p>
+          <p class="doc-role">Software Engineer · AI Tooling &amp; MCP Servers · Front-End Developer</p>
           <div class="doc-contact">
             <span>Sana'a, Yemen · Open to Remote / Relocation</span>
             <a href="tel:+967777505208">+967 777 505 208</a>
             <a href="mailto:eng.dawoodsaleh@gmail.com">eng.dawoodsaleh@gmail.com</a>
             <a href="https://github.com/EngDawood" target="_blank" rel="noopener">github.com/EngDawood</a>
             <a href="https://www.linkedin.com/in/dawood3/" target="_blank" rel="noopener">linkedin.com/in/dawood3</a>
-            <a href="https://x.com/dawo5d" target="_blank" rel="noopener">x.com/dawo5d</a>
+            <a href="https://x.com/dawoodSaleh12" target="_blank" rel="noopener">x.com/dawoodSaleh12</a>
             <a href="https://t.me/Dawo5d" target="_blank" rel="noopener">t.me/Dawo5d</a>
-            <a href="http://engdawood.com" target="_blank" rel="noopener">engdawood.com</a>
+            <a href="https://engdawood.com" target="_blank" rel="noopener">engdawood.com</a>
           </div>
         </div>
         <div class="doc-photo">
@@ -1261,137 +1333,178 @@
       </header>
 
       <h2 id="d-summary" class="doc-section">Summary</h2>
-      <p>Software engineer based in Yemen, building backend systems, Telegram bots, and AI tooling. Driven by a deep curiosity for how things work — from serverless infrastructure to MCP protocol integrations.</p>
-      <p>Key focus areas: serverless architectures on Cloudflare Workers, AI-accessible tooling, and clean API design. Also experienced in academic research writing, presentation design, and online tutoring in CS &amp; Mathematics.</p>
+      <p>Software engineer in Yemen who builds AI tooling and front-end interfaces. I have open-sourced 4 MCP servers that connect AI agents to academic research, illustrations and document OCR, and I build bilingual Arabic/English (RTL) web interfaces with React and Astro.</p>
+      <p>Most of my work runs on Cloudflare Workers: Telegram bots with 5,600+ subscribers, durable media pipelines, and REST and MCP APIs. I also bring experience in academic research writing and teaching CS &amp; Mathematics.</p>
 
       <h2 id="d-projects" class="doc-section">Featured Projects</h2>
 
       <h3 class="doc-item-title">Arabic Scholar MCP Server</h3>
       <p class="doc-item-meta"><a href="https://github.com/EngDawood/arabic-scholar-mcp-server" target="_blank" rel="noopener">github.com/EngDawood/arabic-scholar-mcp-server</a></p>
       <ul class="doc-bullets">
-        <li>Open MCP (Model Context Protocol) server enabling AI models to search Arabic academic research across 4M+ records from Mandumah, ASJP, and SHAMAA.</li>
+        <li>Open MCP (Model Context Protocol) server that lets AI models search 4M+ Arabic academic records from Mandumah, ASJP and SHAMAA.</li>
         <li>Published as an open tool for the Arabic research community.</li>
       </ul>
 
-      <h3 class="doc-item-title">Yemen Jobs Bot — @hr_yemen</h3>
+      <h3 class="doc-item-title">Paper Search MCP Server</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/paper-search-mcp-server" target="_blank" rel="noopener">github.com/EngDawood/paper-search-mcp-server</a></p>
+      <ul class="doc-bullets">
+        <li>MCP server on Cloudflare Workers that searches 18 academic sources with no API key (arXiv, PubMed, Crossref, DBLP, OpenReview and more), plus 6 optional keyed sources.</li>
+        <li>Parallel multi-source search de-duplicated by DOI, arXiv id and title; full-text PDF extraction; 23 tools without keys, up to 34 with keys.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Storyset MCP Server</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/MCP-STORYSET" target="_blank" rel="noopener">github.com/EngDawood/MCP-STORYSET</a><span class="sep">·</span>storyset-mcp.engdawood.com/mcp</p>
+      <ul class="doc-bullets">
+        <li>Remote MCP server (Cloudflare Agents SDK, Durable Objects) to search, download and recolor storyset.com illustrations; free public instance with no signup.</li>
+        <li>Returns fetchable URLs instead of raw file bytes to keep model context small.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Mistral OCR MCP Server &amp; CLI</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/mcp-mistral-ocr" target="_blank" rel="noopener">github.com/EngDawood/mcp-mistral-ocr</a><span class="sep">·</span><a href="https://www.npmjs.com/package/mcp-mistral-ocr" target="_blank" rel="noopener">npm: mcp-mistral-ocr</a></p>
+      <ul class="doc-bullets">
+        <li>MCP server and CLI published on npm for OCR and audio transcription with the Mistral AI API, covering PDF, Office documents, images and audio.</li>
+        <li>6 tools including JSON-schema structured extraction and table extraction; batch processing and Arabic support.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Yemen Jobs Bot · @hr_yemen</h3>
       <p class="doc-item-meta"><a href="https://t.me/hr_yemen" target="_blank" rel="noopener">t.me/hr_yemen</a><span class="sep">·</span><a href="https://t.me/Yemenhrbot" target="_blank" rel="noopener">t.me/Yemenhrbot</a></p>
       <ul class="doc-bullets">
-        <li>Cloudflare Worker aggregating Yemen job listings from 6 sources (ReliefWeb, Yemen HR, EOI Yemen, and more) with AI-powered Arabic translation via Workers AI.</li>
-        <li>Auto-posts to the <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> Telegram channel — currently serving <b>4,900+ subscribers</b>; admin controls via <a href="https://t.me/Yemenhrbot" target="_blank" rel="noopener">@Yemenhrbot</a> with 13 commands.</li>
-        <li>Plugin-based source system (RSS / scraper / API), KV-backed duplicate detection, D1 archive across 4 tables, REST API with 12 endpoints, daily summary digest at 11 PM UTC, deploy-on-push to Cloudflare.</li>
+        <li>Cloudflare Worker that collects Yemen job listings from 6 sources (ReliefWeb, Yemen HR, EOI Yemen and more) and translates them to Arabic with Workers AI.</li>
+        <li>Auto-posts to the <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> Telegram channel, which has <b>5,600+ subscribers</b>; admin controls via <a href="https://t.me/Yemenhrbot" target="_blank" rel="noopener">@Yemenhrbot</a> with 13 commands.</li>
+        <li>Plugin-based sources (RSS / scraper / API), KV duplicate detection, D1 archive across 4 tables, REST API with 12 endpoints, daily digest and deploy-on-push.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Video Caption Bot</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/video-caption" target="_blank" rel="noopener">github.com/EngDawood/video-caption</a></p>
+      <ul class="doc-bullets">
+        <li>Telegram bot that takes an uploaded video or social link, transcribes the speech, translates it and burns the captions back into the video.</li>
+        <li>Durable pipeline on Cloudflare Workflows with per-stage retries; ffmpeg runs in Cloudflare Containers; jobs can be re-run at four depths; external REST API.</li>
       </ul>
 
       <h3 class="doc-item-title">Multi-Platform Telegram Media Bot</h3>
       <p class="doc-item-meta"><a href="https://t.me/download_media_4bot" target="_blank" rel="noopener">t.me/download_media_4bot</a><span class="sep">·</span><a href="https://github.com/EngDawood/download-media" target="_blank" rel="noopener">github.com/EngDawood/download-media</a></p>
       <ul class="doc-bullets">
-        <li>Telegram bot supporting downloads from 9+ platforms, deployed on Cloudflare Workers — live at <a href="https://t.me/download_media_4bot" target="_blank" rel="noopener">@download_media_4bot</a>.</li>
-        <li>Stack: Node.js, TypeScript, Hono, Cloudflare Workers; features include KV storage, webhook automation, and cron scheduling.</li>
+        <li>Downloads media from 10 platforms (TikTok, Instagram, X, YouTube, Facebook, Threads, SoundCloud, Spotify, Pinterest, GitHub); live at <a href="https://t.me/download_media_4bot" target="_blank" rel="noopener">@download_media_4bot</a>.</li>
+        <li>Built with Hono, grammY and Cloudflare Workers; the same downloader is exposed as a REST API and an MCP server; Arabic/English UI; CI with CodeQL and release-please.</li>
       </ul>
 
-      <h3 class="doc-item-title">Mistral OCR</h3>
-      <p class="doc-item-meta"><a href="https://github.com/EngDawood/mistral-ocr" target="_blank" rel="noopener">github.com/EngDawood/mistral-ocr</a></p>
+      <h3 class="doc-item-title">RSS Bridge Bot</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/rss-cloudflare" target="_blank" rel="noopener">github.com/EngDawood/rss-cloudflare</a></p>
       <ul class="doc-bullets">
-        <li>Python scripts for PDF OCR, audio transcription, and document processing using the Mistral AI API.</li>
-        <li>Features: batch processing, cost tracking, multilingual support (including Arabic).</li>
+        <li>Cloudflare Worker that turns Instagram, TikTok and any RSS/Atom feed into Telegram channel posts, with AI-generated Arabic summaries.</li>
+        <li>React + Tailwind admin dashboard served from the Worker; D1, KV and Queues; MCP server on a Durable Object.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Bilingual Portfolio on EmDash CMS</h3>
+      <p class="doc-item-meta"><a href="https://engdawood.com" target="_blank" rel="noopener">engdawood.com</a><span class="sep">·</span><a href="https://github.com/EngDawood/modern-emdash-cms" target="_blank" rel="noopener">github.com/EngDawood/modern-emdash-cms</a></p>
+      <ul class="doc-bullets">
+        <li>Astro SSR portfolio on Cloudflare Workers with Arabic (RTL, default) and English (LTR) i18n, content in D1 and media in R2.</li>
+        <li>Built-in MCP endpoint exposing 46 tools so AI agents can manage site content; sandboxed CMS plugins including an RSS aggregator with AI translation.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Yemen Map</h3>
+      <p class="doc-item-meta"><a href="https://yemen-map.dawod.workers.dev" target="_blank" rel="noopener">yemen-map.dawod.workers.dev</a><span class="sep">·</span><a href="https://github.com/EngDawood/yemen-map" target="_blank" rel="noopener">github.com/EngDawood/yemen-map</a></p>
+      <ul class="doc-bullets">
+        <li>Arabic-first interactive globe (MapLibre GL, Vite) where Yemenis abroad draw a line from their home district to the city they live in.</li>
+        <li>Arabic/English toggle, bilingual search across governorates, districts and ~900 cities, mobile bottom-sheet layout, reduced-motion support; Worker + D1 backend.</li>
+      </ul>
+
+      <h3 class="doc-item-title">Thmanyah Font for the Web</h3>
+      <p class="doc-item-meta"><a href="https://www.npmjs.com/package/@dawod/thmanyah-font-web" target="_blank" rel="noopener">npm: @dawod/thmanyah-font-web</a></p>
+      <ul class="doc-bullets">
+        <li>Community npm and CDN package for the Thmanyah Arabic font family: 3 families, 5 weights each, drop-in CSS.</li>
+        <li>2,300+ npm downloads in the last month (Sep 2026).</li>
       </ul>
 
       <h2 id="d-experience" class="doc-section">Experience</h2>
 
-      <h3 class="doc-item-title">Software Engineer — Self-Employed</h3>
+      <h3 class="doc-item-title">Software Engineer, Self-Employed</h3>
       <p class="doc-item-meta">Remote<span class="sep">·</span>April 2023 – Present</p>
       <ul class="doc-bullets">
-        <li>Built and deployed a multi-platform Telegram media downloader bot (Node.js, Hono, Cloudflare Workers) supporting 9+ platforms with analytics tracking.</li>
-        <li>Developed the Arabic academic research MCP server integrating 4M+ records from Mandumah, ASJP, and SHAMAA — published as open source.</li>
-        <li>Architected serverless backend systems on Cloudflare Workers with KV storage, webhook automation, and cron scheduling.</li>
-        <li>Built and maintained Node.js backend services focused on performance, reliability, and clean API design.</li>
-        <li>Delivered full-stack development, Python automation, and technical documentation projects for international clients.</li>
+        <li>Open-sourced 4 MCP servers (Arabic Scholar, Paper Search, Storyset, Mistral OCR) that give AI agents access to 4M+ Arabic research records, 18 academic sources, illustrations and document OCR.</li>
+        <li>Built Yemen Jobs Bot, a Cloudflare Worker that collects 6 job sources with AI Arabic translation, growing the @hr_yemen channel to 5,600+ subscribers.</li>
+        <li>Built Telegram bots on Cloudflare Workers: a 10-platform media downloader, a video captioning pipeline (Workflows, Containers, ffmpeg) and an RSS bridge with a React admin dashboard.</li>
+        <li>Built bilingual Arabic/English (RTL) front-ends with Astro, React and MapLibre GL; published an Arabic font package on npm.</li>
+        <li>Delivered full-stack development, Python automation and technical documentation projects for international clients.</li>
       </ul>
 
-      <h3 class="doc-item-title">Teaching Assistant — Hajjah University</h3>
+      <h3 class="doc-item-title">Teaching Assistant, Hajjah University</h3>
       <p class="doc-item-meta">Hajjah, Yemen<span class="sep">·</span>October 2022 – April 2023</p>
       <ul class="doc-bullets">
         <li>Taught Object-Oriented Programming (Java) to 60+ undergraduate students (2nd and 3rd year).</li>
-        <li>Designed and led practical lab sessions, translating complex programming concepts into hands-on exercises.</li>
-        <li>Evaluated student projects and provided technical code reviews.</li>
-        <li>Mentored students individually on debugging, software design, and academic project delivery.</li>
+        <li>Designed and led practical lab sessions, turning programming concepts into hands-on exercises.</li>
+        <li>Evaluated student projects and gave technical code reviews.</li>
+        <li>Mentored students one-on-one on debugging, software design and academic project delivery.</li>
       </ul>
 
-      <h3 class="doc-item-title">Academic Research Writer &amp; Presentation Designer — Freelance</h3>
+      <h3 class="doc-item-title">Academic Research Writer &amp; Presentation Designer, Freelance</h3>
       <p class="doc-item-meta">Upwork, Fiverr · Remote<span class="sep">·</span>2020 – Present</p>
       <ul class="doc-bullets">
-        <li>Authored and edited research papers in machine learning, data analysis, and cybersecurity.</li>
+        <li>Wrote and edited research papers in machine learning, data analysis and cybersecurity.</li>
         <li>Translated academic research between Arabic and English with technical accuracy.</li>
-        <li>Formatted research documents to IEEE, APA, and Elsevier standards using LaTeX and Microsoft Word.</li>
-        <li>Designed 70+ professional presentations for conferences and academic institutions (PowerPoint, Canva, Prezi).</li>
-        <li>Achieved 5-star rating from 92% of clients across 70+ projects.</li>
-        <li>Co-authored research on AI applications in healthcare (Journal of Computer Science, 2023).</li>
+        <li>Formatted research documents to IEEE, APA and Elsevier standards using LaTeX and Microsoft Word.</li>
+        <li>Designed presentations for conferences and academic institutions (PowerPoint, Canva, Prezi).</li>
       </ul>
 
       <h3 class="doc-item-title">Online Private Tutor</h3>
-      <p class="doc-item-meta">Remote — Saudi &amp; Yemeni Students<span class="sep">·</span>2020 – Present</p>
+      <p class="doc-item-meta">Remote, Saudi &amp; Yemeni Students<span class="sep">·</span>2020 – Present</p>
       <ul class="doc-bullets">
-        <li>Facilitated daily online tutoring sessions for 10–15 students per group in Computer Science, Mathematics, English, and Physics — aligned with the Saudi curriculum.</li>
-        <li>Achieved 25% average exam score improvements across student cohorts.</li>
-        <li>Developed interactive lesson plans, PowerPoint presentations, and visual aids.</li>
-        <li>Delivered bilingual instruction (Arabic &amp; English).</li>
-        <li>Maintained 100% on-time attendance with flexible scheduling.</li>
+        <li>Ran daily online tutoring sessions for groups of 10–15 students in Computer Science, Mathematics, English and Physics, following the Saudi curriculum.</li>
+        <li>Developed lesson plans, presentations and visual aids, with weekly progress reports to parents.</li>
+        <li>Taught in both Arabic and English.</li>
       </ul>
 
-      <h3 class="doc-item-title">Field Surveyor — Moore Yemen</h3>
+      <h3 class="doc-item-title">Field Surveyor, Moore Yemen</h3>
       <p class="doc-item-meta">Hajjah, Yemen<span class="sep">·</span>July 2021 – August 2021</p>
       <ul class="doc-bullets">
         <li>Performed field surveys and data collection for audit and advisory services.</li>
-        <li>Conducted site inspections and documentation; collaborated with audit teams for client projects.</li>
+        <li>Conducted site inspections and documentation; collaborated with audit teams on client projects.</li>
       </ul>
 
-      <h3 class="doc-item-title">Remittance Teller — Al Tayseer Exchange &amp; Transfer</h3>
+      <h3 class="doc-item-title">Remittance Teller, Al Tayseer Exchange &amp; Transfer</h3>
       <p class="doc-item-meta">Hajjah, Yemen<span class="sep">·</span>November 2018 – 2019</p>
       <ul class="doc-bullets">
-        <li>Handled currency exchange, money transfers, and daily cash operations.</li>
-        <li>Provided professional customer service in a fast-paced banking environment.</li>
+        <li>Handled currency exchange, money transfers and daily cash operations.</li>
+        <li>Provided customer service in a fast-paced financial environment.</li>
       </ul>
 
       <h2 id="d-education" class="doc-section">Education</h2>
-      <h3 class="doc-item-title">Hajjah University — B.Sc. Applied Science, Computer Science</h3>
+      <h3 class="doc-item-title">Hajjah University, B.Sc. Applied Science, Computer Science</h3>
       <p class="doc-item-meta">Hajjah, Yemen<span class="sep">·</span>2016 – 2020</p>
       <ul class="doc-bullets">
-        <li>Graduated with Honors (Excellent GPA) — 2019–2020.</li>
+        <li>Graduated with Honors (Excellent GPA), 2019–2020.</li>
         <li>Specializations: Artificial Intelligence, Data Analysis, Cybersecurity.</li>
         <li>Key courses: Data Structures &amp; Algorithms, Database Systems, OOP, Software Engineering, Web Technologies, Operating Systems, Computer Networks.</li>
-        <li>Final year project: data-driven application with structured relational database backend.</li>
+        <li>Final year project: data-driven application with a relational database backend.</li>
       </ul>
-      <h3 class="doc-item-title">Al-Thawra Secondary School (Boys) — High School Diploma</h3>
+      <h3 class="doc-item-title">Al-Thawra Secondary School (Boys), High School Diploma</h3>
       <p class="doc-item-meta">Hajjah, Yemen<span class="sep">·</span>2014<span class="sep">·</span>Excellent GPA</p>
 
       <h2 id="d-skills" class="doc-section">Technical Skills</h2>
-      <div class="doc-skill-row"><strong>Backend &amp; Infra</strong><span>Node.js, TypeScript, Python, Hono, Cloudflare Workers, KV Storage, Cron, Webhooks, RESTful API Design, MVC, PHP / Laravel (learning), serverless patterns.</span></div>
-      <div class="doc-skill-row"><strong>Frontend</strong><span>React.js, Next.js (learning), HTML5, CSS3, JavaScript (ES6+).</span></div>
-      <div class="doc-skill-row"><strong>Databases</strong><span>MySQL, PostgreSQL, SQL query optimization, Schema Design, Redis (fundamentals).</span></div>
-      <div class="doc-skill-row"><strong>AI &amp; Tooling</strong><span>MCP (Model Context Protocol) server development; Python automation with Pandas, NumPy, Scikit-learn, TensorFlow; Mistral AI API; AI workflow integration.</span></div>
-      <div class="doc-skill-row"><strong>DevOps &amp; Tools</strong><span>Git / GitHub, Linux CLI, Docker (fundamentals), CI/CD concepts; Design Patterns (Repository, Factory, Observer); LaTeX, MS Office, Canva, Prezi.</span></div>
-      <div class="doc-skill-row"><strong>Architecture</strong><span>Clean Architecture, SOLID Principles, SaaS Multi-Tenancy, Microservices (study), Unit Testing principles.</span></div>
+      <div class="doc-skill-row"><strong>AI &amp; Tooling</strong><span>MCP server development (TypeScript SDK, Streamable HTTP, stdio), Cloudflare Agents SDK, Workers AI, Mistral AI API, Claude Code; Python with Pandas, NumPy, Scikit-learn, TensorFlow.</span></div>
+      <div class="doc-skill-row"><strong>Frontend</strong><span>React, Astro, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Vite, MapLibre GL, bilingual RTL/LTR i18n, responsive design; Next.js (learning).</span></div>
+      <div class="doc-skill-row"><strong>Backend &amp; Infra</strong><span>Node.js, Hono, grammY, Python, Cloudflare Workers (D1, KV, R2, Queues, Durable Objects, Workflows, Containers), RESTful API design, webhooks, cron, Telegram Bot API.</span></div>
+      <div class="doc-skill-row"><strong>Databases</strong><span>SQLite / Cloudflare D1, MySQL, PostgreSQL, SQL query optimization, schema design, Redis (fundamentals).</span></div>
+      <div class="doc-skill-row"><strong>DevOps &amp; Tools</strong><span>Git, GitHub Actions, CI/CD, npm publishing, Wrangler, Docker (fundamentals), Linux CLI; LaTeX, MS Office, Canva, Prezi.</span></div>
+      <div class="doc-skill-row"><strong>Architecture</strong><span>Clean Architecture, SOLID, design patterns (Repository, Factory, Observer), SaaS multi-tenancy, microservices (study), unit testing.</span></div>
 
       <h2 id="d-certs" class="doc-section">Certifications</h2>
-      <div class="doc-cert-row"><span class="y">2023</span><span class="t"><b>Data Visualization with Python</b> <span>— Udemy</span></span></div>
-      <div class="doc-cert-row"><span class="y">2022</span><span class="t"><b>Academic Writing Certification</b> <span>— Coursera</span></span></div>
-      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>Train the Trainer (TOT)</b> <span>— Edraak × International Board of Certified Trainers</span></span></div>
-      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>Career Preparation</b> <span>— Edraak × British Council</span></span></div>
-      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>English for the Workplace</b> <span>— Edraak × British Council</span></span></div>
+      <div class="doc-cert-row"><span class="y">2023</span><span class="t"><b>Data Visualization with Python</b> <span>· Udemy</span></span></div>
+      <div class="doc-cert-row"><span class="y">2022</span><span class="t"><b>Academic Writing Certification</b> <span>· Coursera</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>Train the Trainer (TOT)</b> <span>· Edraak × International Board of Certified Trainers</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>Career Preparation</b> <span>· Edraak × British Council</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>English for the Workplace</b> <span>· Edraak × British Council</span></span></div>
 
       <h2 id="d-languages" class="doc-section">Languages</h2>
       <div class="doc-lang-row"><strong>Arabic</strong><span>Native</span></div>
-      <div class="doc-lang-row"><strong>English</strong><span>Advanced — C1 (Writing &amp; Speaking)</span></div>
+      <div class="doc-lang-row"><strong>English</strong><span>Advanced, C1 (Writing &amp; Speaking)</span></div>
 
       <h2 id="d-accomplishments" class="doc-section">Accomplishments</h2>
       <ul class="doc-bullets">
-        <li>Built MCP server now giving AI models access to 4M+ Arabic academic records.</li>
-        <li>Yemen Jobs Bot serving <b>4,900+ Telegram subscribers</b> at <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> with AI-translated job posts from 6 sources.</li>
-        <li>5-star freelance rating achieved by 92% of clients on Upwork &amp; Fiverr.</li>
-        <li>Co-authored published research on AI in healthcare (Journal of Computer Science, 2023).</li>
-        <li>Designed 70+ research presentations adopted by international conferences and universities in the Middle East.</li>
-        <li>Recognized data infographic series adopted by universities across the Middle East.</li>
-        <li>Mentored 30+ students with measurable grade improvements and high parental satisfaction.</li>
-        <li>GitHub: 76 repositories · 315 stars given · Quickdraw · Pair Extraordinaire · Pull Shark ×2 · YOLO.</li>
+        <li>Open-sourced 4 MCP servers, including one that gives AI models access to 4M+ Arabic academic records and one that searches 18 academic sources.</li>
+        <li>Grew Yemen Jobs Bot to <b>5,600+ Telegram subscribers</b> at <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> with AI-translated job posts from 6 sources.</li>
+        <li>Published <a href="https://www.npmjs.com/package/@dawod/thmanyah-font-web" target="_blank" rel="noopener">@dawod/thmanyah-font-web</a> on npm: 2,300+ downloads in the last month.</li>
+        <li>GitHub: 116 repositories across MCP servers, Telegram bots and front-end projects.</li>
       </ul>
 
     </article>
@@ -1401,16 +1514,16 @@
       <header class="doc-header">
         <div class="doc-header-text">
           <h1 class="doc-name">داود صالح</h1>
-          <p class="doc-role">مهندس برمجيات · أدوات الذكاء الاصطناعي · أنظمة Serverless الخلفية · Node.js</p>
+          <p class="doc-role">مهندس برمجيات · أدوات الذكاء الاصطناعي وخوادم MCP · مطوّر واجهات أمامية</p>
           <div class="doc-contact">
             <span>صنعاء، اليمن · متاح للعمل عن بُعد / الانتقال</span>
             <a href="tel:+967777505208">+967 777 505 208</a>
             <a href="mailto:eng.dawoodsaleh@gmail.com">eng.dawoodsaleh@gmail.com</a>
             <a href="https://github.com/EngDawood" target="_blank" rel="noopener">github.com/EngDawood</a>
             <a href="https://www.linkedin.com/in/dawood3/" target="_blank" rel="noopener">linkedin.com/in/dawood3</a>
-            <a href="https://x.com/dawo5d" target="_blank" rel="noopener">x.com/dawo5d</a>
+            <a href="https://x.com/dawoodSaleh12" target="_blank" rel="noopener">x.com/dawoodSaleh12</a>
             <a href="https://t.me/Dawo5d" target="_blank" rel="noopener">t.me/Dawo5d</a>
-            <a href="http://engdawood.com" target="_blank" rel="noopener">engdawood.com</a>
+            <a href="https://engdawood.com" target="_blank" rel="noopener">engdawood.com</a>
           </div>
         </div>
         <div class="doc-photo">
@@ -1419,8 +1532,8 @@
       </header>
 
       <h2 id="d-summary-ar" class="doc-section">نبذة</h2>
-      <p>مهندس برمجيات من اليمن، أبني أنظمة خلفية وبوتات تيليجرام وأدوات للذكاء الاصطناعي. يقودني فضولٌ عميق لفهم كيفية عمل الأشياء — من بنية الـ Serverless إلى تكاملات بروتوكول MCP.</p>
-      <p>أركّز على معماريات Serverless فوق Cloudflare Workers، وعلى بناء أدوات يستطيع الذكاء الاصطناعي الوصول إليها مباشرة، وعلى تصميم واجهات برمجية نظيفة. ولديّ خبرة أيضًا في كتابة الأبحاث الأكاديمية وتصميم العروض التقديمية والتدريس عن بُعد في علوم الحاسوب والرياضيات.</p>
+      <p>مهندس برمجيات من اليمن، أبني أدوات للذكاء الاصطناعي وواجهات أمامية للويب. نشرت 4 خوادم MCP مفتوحة المصدر تربط وكلاء الذكاء الاصطناعي بالأبحاث الأكاديمية والرسومات التوضيحية والتعرّف الضوئي على النصوص، وأبني واجهات ويب ثنائية اللغة (عربية من اليمين لليسار وإنجليزية) باستخدام React وAstro.</p>
+      <p>يعمل معظم ما أبنيه على Cloudflare Workers: بوتات تيليجرام يتابعها أكثر من 5,600 مشترك، وخطوط معالجة وسائط متينة، وواجهات REST وMCP. ولديّ خبرة أيضًا في كتابة الأبحاث الأكاديمية وتدريس علوم الحاسوب والرياضيات.</p>
 
       <h2 id="d-projects-ar" class="doc-section">مشاريع مختارة</h2>
 
@@ -1431,125 +1544,166 @@
         <li>منشور كأداة مفتوحة لخدمة مجتمع البحث العلمي العربي.</li>
       </ul>
 
-      <h3 class="doc-item-title">بوت وظائف اليمن — @hr_yemen</h3>
+      <h3 class="doc-item-title">خادم MCP للبحث في الأوراق العلمية</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/paper-search-mcp-server" target="_blank" rel="noopener">github.com/EngDawood/paper-search-mcp-server</a></p>
+      <ul class="doc-bullets">
+        <li>خادم MCP على Cloudflare Workers يبحث في 18 مصدرًا أكاديميًا دون مفتاح API (منها arXiv وPubMed وCrossref وDBLP وOpenReview)، مع 6 مصادر إضافية اختيارية بمفاتيح.</li>
+        <li>بحث متوازٍ في عدة مصادر مع حذف المكررات حسب DOI ومعرّف arXiv والعنوان، واستخراج النص الكامل من ملفات PDF، و23 أداة دون مفاتيح تصل إلى 34 بالمفاتيح.</li>
+      </ul>
+
+      <h3 class="doc-item-title">خادم Storyset MCP</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/MCP-STORYSET" target="_blank" rel="noopener">github.com/EngDawood/MCP-STORYSET</a><span class="sep">·</span>storyset-mcp.engdawood.com/mcp</p>
+      <ul class="doc-bullets">
+        <li>خادم MCP بعيد (Cloudflare Agents SDK وDurable Objects) للبحث في رسومات storyset.com وتنزيلها وإعادة تلوينها، مع نسخة عامة مجانية دون تسجيل.</li>
+        <li>يعيد روابط قابلة للتنزيل بدل محتوى الملفات الخام للحفاظ على سياق النموذج صغيرًا.</li>
+      </ul>
+
+      <h3 class="doc-item-title">خادم Mistral OCR وأداة سطر الأوامر</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/mcp-mistral-ocr" target="_blank" rel="noopener">github.com/EngDawood/mcp-mistral-ocr</a><span class="sep">·</span><a href="https://www.npmjs.com/package/mcp-mistral-ocr" target="_blank" rel="noopener">npm: mcp-mistral-ocr</a></p>
+      <ul class="doc-bullets">
+        <li>خادم MCP وأداة سطر أوامر منشوران على npm للتعرّف الضوئي على النصوص وتفريغ الصوت عبر Mistral AI API، ويدعمان ملفات PDF ومستندات Office والصور والصوت.</li>
+        <li>6 أدوات منها استخراج البيانات المهيكلة وفق مخطط JSON واستخراج الجداول، مع المعالجة الدفعية ودعم العربية.</li>
+      </ul>
+
+      <h3 class="doc-item-title">بوت وظائف اليمن · @hr_yemen</h3>
       <p class="doc-item-meta"><a href="https://t.me/hr_yemen" target="_blank" rel="noopener">t.me/hr_yemen</a><span class="sep">·</span><a href="https://t.me/Yemenhrbot" target="_blank" rel="noopener">t.me/Yemenhrbot</a></p>
       <ul class="doc-bullets">
-        <li>خدمة مبنية على Cloudflare Workers تجمع إعلانات الوظائف في اليمن من 6 مصادر (منها ReliefWeb وYemen HR وEOI Yemen) مع ترجمة عربية بالذكاء الاصطناعي عبر Workers AI.</li>
-        <li>تنشر تلقائيًا في قناة <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> على تيليجرام — تخدم حاليًا أكثر من <b>4,900 مشترك</b>، مع تحكّم إداري عبر بوت <a href="https://t.me/Yemenhrbot" target="_blank" rel="noopener">@Yemenhrbot</a> يتضمّن 13 أمرًا.</li>
-        <li>نظام مصادر قائم على الإضافات (RSS / Scraper / API)، وكشف المكررات عبر KV، وأرشفة في D1 عبر 4 جداول، وواجهة REST API مكوّنة من 12 مسارًا، وملخّص يومي الساعة 11 مساءً UTC، ونشر تلقائي عبر Cloudflare عند كل push.</li>
+        <li>خدمة على Cloudflare Workers تجمع إعلانات الوظائف في اليمن من 6 مصادر (منها ReliefWeb وYemen HR وEOI Yemen) وتترجمها إلى العربية عبر Workers AI.</li>
+        <li>تنشر تلقائيًا في قناة <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> على تيليجرام التي تضم <b>أكثر من 5,600 مشترك</b>، مع تحكّم إداري عبر بوت <a href="https://t.me/Yemenhrbot" target="_blank" rel="noopener">@Yemenhrbot</a> يتضمّن 13 أمرًا.</li>
+        <li>نظام مصادر قائم على الإضافات (RSS / Scraper / API)، وكشف المكررات عبر KV، وأرشفة في D1 عبر 4 جداول، وواجهة REST API من 12 مسارًا، وملخّص يومي، ونشر تلقائي عند كل push.</li>
+      </ul>
+
+      <h3 class="doc-item-title">بوت ترجمة الفيديو</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/video-caption" target="_blank" rel="noopener">github.com/EngDawood/video-caption</a></p>
+      <ul class="doc-bullets">
+        <li>بوت تيليجرام يستقبل فيديو مرفوعًا أو رابطًا من وسائل التواصل، فيفرّغ الكلام ويترجمه ثم يدمج الترجمة داخل الفيديو.</li>
+        <li>خط معالجة متين على Cloudflare Workflows تُعاد فيه كل مرحلة على حدة عند الفشل، وتشغيل ffmpeg داخل Cloudflare Containers، وإمكانية إعادة المعالجة على أربعة مستويات، وواجهة REST خارجية.</li>
       </ul>
 
       <h3 class="doc-item-title">بوت تيليجرام متعدد المنصّات لتحميل الوسائط</h3>
       <p class="doc-item-meta"><a href="https://t.me/download_media_4bot" target="_blank" rel="noopener">t.me/download_media_4bot</a><span class="sep">·</span><a href="https://github.com/EngDawood/download-media" target="_blank" rel="noopener">github.com/EngDawood/download-media</a></p>
       <ul class="doc-bullets">
-        <li>بوت تيليجرام يدعم التحميل من أكثر من 9 منصّات، منشور على Cloudflare Workers — متاح على <a href="https://t.me/download_media_4bot" target="_blank" rel="noopener">@download_media_4bot</a>.</li>
-        <li>التقنيات: Node.js وTypeScript وHono وCloudflare Workers، مع تخزين KV وأتمتة Webhook وجدولة Cron.</li>
+        <li>يحمّل الوسائط من 10 منصّات (TikTok وInstagram وX وYouTube وFacebook وThreads وSoundCloud وSpotify وPinterest وGitHub)، ومتاح على <a href="https://t.me/download_media_4bot" target="_blank" rel="noopener">@download_media_4bot</a>.</li>
+        <li>مبني بـ Hono وgrammY وCloudflare Workers، ويتوفر المحمّل نفسه كواجهة REST API وخادم MCP، بواجهة عربية وإنجليزية، مع تكامل مستمر عبر CodeQL وrelease-please.</li>
       </ul>
 
-      <h3 class="doc-item-title">Mistral OCR</h3>
-      <p class="doc-item-meta"><a href="https://github.com/EngDawood/mistral-ocr" target="_blank" rel="noopener">github.com/EngDawood/mistral-ocr</a></p>
+      <h3 class="doc-item-title">بوت RSS Bridge</h3>
+      <p class="doc-item-meta"><a href="https://github.com/EngDawood/rss-cloudflare" target="_blank" rel="noopener">github.com/EngDawood/rss-cloudflare</a></p>
       <ul class="doc-bullets">
-        <li>سكربتات بايثون للتعرّف الضوئي على نصوص PDF، وتفريغ الصوت، ومعالجة الوثائق باستخدام Mistral AI API.</li>
-        <li>تشمل: المعالجة الدفعية، وتتبّع التكلفة، ودعمًا متعدد اللغات (بما فيها العربية).</li>
+        <li>خدمة على Cloudflare Workers تحوّل محتوى Instagram وTikTok وأي خلاصة RSS/Atom إلى منشورات في قنوات تيليجرام، مع ملخّصات عربية بالذكاء الاصطناعي.</li>
+        <li>لوحة تحكم بـ React وTailwind تُقدَّم من الخدمة نفسها، مع D1 وKV وQueues، وخادم MCP على Durable Object.</li>
+      </ul>
+
+      <h3 class="doc-item-title">موقع شخصي ثنائي اللغة على EmDash CMS</h3>
+      <p class="doc-item-meta"><a href="https://engdawood.com" target="_blank" rel="noopener">engdawood.com</a><span class="sep">·</span><a href="https://github.com/EngDawood/modern-emdash-cms" target="_blank" rel="noopener">github.com/EngDawood/modern-emdash-cms</a></p>
+      <ul class="doc-bullets">
+        <li>موقع Astro SSR على Cloudflare Workers باللغتين العربية (افتراضية، من اليمين لليسار) والإنجليزية، مع المحتوى في D1 والوسائط في R2.</li>
+        <li>نقطة MCP مدمجة توفّر 46 أداة ليدير وكلاء الذكاء الاصطناعي محتوى الموقع، وإضافات CMS معزولة منها مجمّع RSS مع ترجمة بالذكاء الاصطناعي.</li>
+      </ul>
+
+      <h3 class="doc-item-title">خريطة اليمن · خريطة الغربة</h3>
+      <p class="doc-item-meta"><a href="https://yemen-map.dawod.workers.dev" target="_blank" rel="noopener">yemen-map.dawod.workers.dev</a><span class="sep">·</span><a href="https://github.com/EngDawood/yemen-map" target="_blank" rel="noopener">github.com/EngDawood/yemen-map</a></p>
+      <ul class="doc-bullets">
+        <li>كرة أرضية تفاعلية عربية أولًا (MapLibre GL وVite) يرسم فيها اليمني المغترب خطًا من مديريته إلى المدينة التي يعيش فيها.</li>
+        <li>تبديل بين العربية والإنجليزية، وبحث ثنائي اللغة في المحافظات والمديريات ونحو 900 مدينة، وتصميم للجوال، ودعم لتقليل الحركة، مع خدمة Workers وقاعدة D1.</li>
+      </ul>
+
+      <h3 class="doc-item-title">خط ثمانية للويب</h3>
+      <p class="doc-item-meta"><a href="https://www.npmjs.com/package/@dawod/thmanyah-font-web" target="_blank" rel="noopener">npm: @dawod/thmanyah-font-web</a></p>
+      <ul class="doc-bullets">
+        <li>حزمة مجتمعية على npm وCDN لعائلة خطوط ثمانية العربية: 3 عائلات بخمسة أوزان لكل منها، بملف CSS جاهز.</li>
+        <li>أكثر من 2,300 تنزيل على npm خلال الشهر الأخير (سبتمبر 2026).</li>
       </ul>
 
       <h2 id="d-experience-ar" class="doc-section">الخبرات العملية</h2>
 
-      <h3 class="doc-item-title">مهندس برمجيات — عمل حر</h3>
+      <h3 class="doc-item-title">مهندس برمجيات، عمل حر</h3>
       <p class="doc-item-meta">عن بُعد<span class="sep">·</span>أبريل 2023 – حتى الآن</p>
       <ul class="doc-bullets">
-        <li>صمّمت ونشرت بوت تيليجرام لتحميل الوسائط من أكثر من 9 منصّات باستخدام (Node.js وHono وCloudflare Workers) مع تتبّع إحصائي للاستخدام.</li>
-        <li>طوّرت خادم MCP للبحث الأكاديمي العربي بربط أكثر من 4 ملايين سجل من قواعد المنظومة وASJP وSHAMAA — منشورًا كمصدر مفتوح.</li>
-        <li>هندست أنظمة خلفية Serverless على Cloudflare Workers مع تخزين KV وأتمتة Webhook وجدولة Cron.</li>
-        <li>بنيت وصُنت خدمات Node.js خلفية بتركيز على الأداء والموثوقية وتصميم واجهات API نظيفة.</li>
+        <li>نشرت 4 خوادم MCP مفتوحة المصدر (البحث الأكاديمي العربي، البحث في الأوراق العلمية، Storyset، Mistral OCR) تمنح وكلاء الذكاء الاصطناعي وصولًا إلى أكثر من 4 ملايين سجل بحثي عربي و18 مصدرًا أكاديميًا والرسومات والتعرّف الضوئي على المستندات.</li>
+        <li>بنيت بوت وظائف اليمن على Cloudflare Workers لجمع الوظائف من 6 مصادر مع ترجمة عربية بالذكاء الاصطناعي، ونمت قناة @hr_yemen إلى أكثر من 5,600 مشترك.</li>
+        <li>بنيت بوتات تيليجرام على Cloudflare Workers: محمّل وسائط من 10 منصّات، وخط معالجة لترجمة الفيديو (Workflows وContainers وffmpeg)، وبوت RSS مع لوحة تحكم بـ React.</li>
+        <li>بنيت واجهات أمامية ثنائية اللغة (عربية وإنجليزية) باستخدام Astro وReact وMapLibre GL، ونشرت حزمة خطوط عربية على npm.</li>
         <li>سلّمت مشاريع تطوير ويب متكاملة وأتمتة بايثون وتوثيقًا تقنيًا لعملاء دوليين.</li>
       </ul>
 
-      <h3 class="doc-item-title">معيد جامعي — جامعة حجة</h3>
+      <h3 class="doc-item-title">معيد جامعي، جامعة حجة</h3>
       <p class="doc-item-meta">حجة، اليمن<span class="sep">·</span>أكتوبر 2022 – أبريل 2023</p>
       <ul class="doc-bullets">
         <li>درّست مادة البرمجة الكائنية (Java) لأكثر من 60 طالبًا في المستويين الثاني والثالث.</li>
-        <li>صمّمت جلسات معملية تطبيقية تترجم المفاهيم البرمجية إلى تمارين عملية.</li>
-        <li>قيّمت مشاريع الطلاب وراجعت أكوادهم البرمجية مراجعةً تقنية.</li>
+        <li>صمّمت جلسات معملية تطبيقية تحوّل المفاهيم البرمجية إلى تمارين عملية.</li>
+        <li>قيّمت مشاريع الطلاب وراجعت أكوادهم مراجعةً تقنية.</li>
         <li>أرشدت الطلاب فرديًا في تصحيح الأخطاء وتصميم البرمجيات وتسليم المشاريع الأكاديمية.</li>
       </ul>
 
-      <h3 class="doc-item-title">باحث أكاديمي ومصمم عروض تقديمية — عمل حر</h3>
+      <h3 class="doc-item-title">باحث أكاديمي ومصمم عروض تقديمية، عمل حر</h3>
       <p class="doc-item-meta">Upwork وFiverr · عن بُعد<span class="sep">·</span>2020 – حتى الآن</p>
       <ul class="doc-bullets">
         <li>كتبت وحرّرت أوراقًا بحثية في تعلم الآلة وتحليل البيانات والأمن السيبراني.</li>
         <li>ترجمت الأبحاث الأكاديمية بين العربية والإنجليزية بدقّة تقنية.</li>
         <li>نسّقت الوثائق البحثية وفق معايير IEEE وAPA وElsevier باستخدام LaTeX وMicrosoft Word.</li>
-        <li>صمّمت أكثر من 70 عرضًا تقديميًا احترافيًا لمؤتمرات ومؤسسات أكاديمية (PowerPoint وCanva وPrezi).</li>
-        <li>حصلت على تقييم 5 نجوم من 92٪ من العملاء عبر أكثر من 70 مشروعًا.</li>
-        <li>شاركت في تأليف بحث منشور عن تطبيقات الذكاء الاصطناعي في الرعاية الصحية (Journal of Computer Science، 2023).</li>
+        <li>صمّمت عروضًا تقديمية لمؤتمرات ومؤسسات أكاديمية (PowerPoint وCanva وPrezi).</li>
       </ul>
 
       <h3 class="doc-item-title">مدرّس خاص عبر الإنترنت</h3>
-      <p class="doc-item-meta">عن بُعد — طلاب سعوديون ويمنيون<span class="sep">·</span>2020 – حتى الآن</p>
+      <p class="doc-item-meta">عن بُعد، طلاب سعوديون ويمنيون<span class="sep">·</span>2020 – حتى الآن</p>
       <ul class="doc-bullets">
         <li>قدّمت دروسًا يومية لمجموعات من 10 إلى 15 طالبًا في علوم الحاسوب والرياضيات والإنجليزية والفيزياء وفق المنهج السعودي.</li>
-        <li>حقّقت تحسّنًا متوسطًا في درجات الاختبارات بنسبة 25٪ في صفوف الطلاب.</li>
-        <li>طوّرت خططًا دراسية تفاعلية وعروضًا توضيحية ووسائل بصرية مساعدة.</li>
-        <li>قدّمت الشرح بأسلوب ثنائي اللغة (العربية والإنجليزية).</li>
-        <li>حافظت على التزام كامل بالحضور مع مرونة في الجدولة.</li>
+        <li>طوّرت خططًا دراسية وعروضًا ووسائل بصرية مساعدة، مع تقارير أسبوعية لأولياء الأمور.</li>
+        <li>قدّمت الشرح باللغتين العربية والإنجليزية.</li>
       </ul>
 
-      <h3 class="doc-item-title">مساح ميداني — Moore Yemen</h3>
+      <h3 class="doc-item-title">مساح ميداني، Moore Yemen</h3>
       <p class="doc-item-meta">حجة، اليمن<span class="sep">·</span>يوليو 2021 – أغسطس 2021</p>
       <ul class="doc-bullets">
         <li>نفّذت مسوحات ميدانية وجمع بيانات لمشاريع تدقيق واستشارات.</li>
         <li>أجريت زيارات تفقّدية وتوثيقًا للمواقع، وتعاونت مع فرق التدقيق في مشاريع العملاء.</li>
       </ul>
 
-      <h3 class="doc-item-title">صرّاف حوالات — مؤسسة التيسير للصرافة والتحويلات</h3>
+      <h3 class="doc-item-title">صرّاف حوالات، مؤسسة التيسير للصرافة والتحويلات</h3>
       <p class="doc-item-meta">حجة، اليمن<span class="sep">·</span>نوفمبر 2018 – 2019</p>
       <ul class="doc-bullets">
         <li>تعاملت مع صرف العملات والحوالات المالية والعمليات النقدية اليومية.</li>
-        <li>قدّمت خدمة عملاء احترافية في بيئة مصرفية سريعة الإيقاع.</li>
+        <li>قدّمت خدمة عملاء في بيئة مالية سريعة الإيقاع.</li>
       </ul>
 
       <h2 id="d-education-ar" class="doc-section">المؤهلات العلمية</h2>
-      <h3 class="doc-item-title">جامعة حجة — بكالوريوس علوم تطبيقية، تخصص علوم الحاسوب</h3>
+      <h3 class="doc-item-title">جامعة حجة، بكالوريوس علوم تطبيقية، تخصص علوم الحاسوب</h3>
       <p class="doc-item-meta">حجة، اليمن<span class="sep">·</span>2016 – 2020</p>
       <ul class="doc-bullets">
-        <li>تخرّجت بمرتبة الشرف (تقدير ممتاز) — 2019–2020.</li>
+        <li>تخرّجت بمرتبة الشرف (تقدير ممتاز)، 2019–2020.</li>
         <li>التخصصات الفرعية: الذكاء الاصطناعي، تحليل البيانات، الأمن السيبراني.</li>
         <li>أهم المقررات: هياكل البيانات والخوارزميات، قواعد البيانات، البرمجة الكائنية، هندسة البرمجيات، تقنيات الويب، نظم التشغيل، شبكات الحاسوب.</li>
-        <li>مشروع التخرّج: تطبيق مبني على البيانات بقاعدة بيانات علائقية مهيكلة.</li>
+        <li>مشروع التخرّج: تطبيق مبني على البيانات بقاعدة بيانات علائقية.</li>
       </ul>
-      <h3 class="doc-item-title">ثانوية الثورة (بنين) — الشهادة الثانوية العامة</h3>
+      <h3 class="doc-item-title">ثانوية الثورة (بنين)، الشهادة الثانوية العامة</h3>
       <p class="doc-item-meta">حجة، اليمن<span class="sep">·</span>2014<span class="sep">·</span>تقدير ممتاز</p>
 
       <h2 id="d-skills-ar" class="doc-section">المهارات التقنية</h2>
-      <div class="doc-skill-row"><strong>الأنظمة الخلفية والبنية التحتية</strong><span>Node.js, TypeScript, Python, Hono, Cloudflare Workers, KV Storage, Cron, Webhooks، تصميم REST API، نمط MVC، PHP / Laravel (قيد التعلم)، أنماط Serverless.</span></div>
-      <div class="doc-skill-row"><strong>الواجهات الأمامية</strong><span>React.js, Next.js (قيد التعلم), HTML5, CSS3, JavaScript (ES6+).</span></div>
-      <div class="doc-skill-row"><strong>قواعد البيانات</strong><span>MySQL, PostgreSQL، تحسين استعلامات SQL، تصميم المخطط، Redis (أساسيات).</span></div>
-      <div class="doc-skill-row"><strong>الذكاء الاصطناعي والأدوات</strong><span>تطوير خوادم MCP، وأتمتة بايثون باستخدام Pandas وNumPy وScikit-learn وTensorFlow، وMistral AI API، ودمج تدفّقات الذكاء الاصطناعي.</span></div>
-      <div class="doc-skill-row"><strong>DevOps والأدوات</strong><span>Git / GitHub, Linux CLI, Docker (أساسيات), مفاهيم CI/CD، أنماط التصميم (Repository, Factory, Observer)، LaTeX, MS Office, Canva, Prezi.</span></div>
-      <div class="doc-skill-row"><strong>المعمارية</strong><span>Clean Architecture، مبادئ SOLID، تعدد المستأجرين في SaaS، الميكروسيرفس (دراسة)، مبادئ اختبار الوحدات.</span></div>
+      <div class="doc-skill-row"><strong>الذكاء الاصطناعي والأدوات</strong><span>تطوير خوادم MCP (TypeScript SDK وStreamable HTTP وstdio)، وCloudflare Agents SDK، وWorkers AI، وMistral AI API، وClaude Code؛ وبايثون مع Pandas وNumPy وScikit-learn وTensorFlow.</span></div>
+      <div class="doc-skill-row"><strong>الواجهات الأمامية</strong><span>React, Astro, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Vite, MapLibre GL، وتعدد اللغات مع دعم الاتجاه من اليمين لليسار، والتصميم المتجاوب؛ Next.js (قيد التعلم).</span></div>
+      <div class="doc-skill-row"><strong>الأنظمة الخلفية والبنية التحتية</strong><span>Node.js, Hono, grammY، بايثون، Cloudflare Workers (D1, KV, R2, Queues, Durable Objects, Workflows, Containers)، تصميم REST API، Webhooks، Cron، Telegram Bot API.</span></div>
+      <div class="doc-skill-row"><strong>قواعد البيانات</strong><span>SQLite / Cloudflare D1, MySQL, PostgreSQL، تحسين استعلامات SQL، تصميم المخطط، Redis (أساسيات).</span></div>
+      <div class="doc-skill-row"><strong>DevOps والأدوات</strong><span>Git, GitHub Actions، التكامل والنشر المستمر، النشر على npm، Wrangler, Docker (أساسيات), Linux CLI؛ LaTeX, MS Office, Canva, Prezi.</span></div>
+      <div class="doc-skill-row"><strong>المعمارية</strong><span>Clean Architecture، مبادئ SOLID، أنماط التصميم (Repository, Factory, Observer)، تعدد المستأجرين في SaaS، الميكروسيرفس (دراسة)، اختبار الوحدات.</span></div>
 
       <h2 id="d-certs-ar" class="doc-section">الشهادات</h2>
-      <div class="doc-cert-row"><span class="y">2023</span><span class="t"><b>تصور البيانات باستخدام بايثون</b> <span>— Udemy</span></span></div>
-      <div class="doc-cert-row"><span class="y">2022</span><span class="t"><b>شهادة الكتابة الأكاديمية</b> <span>— Coursera</span></span></div>
-      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>تدريب المدربين (TOT)</b> <span>— إدراك × المجلس الدولي للمدربين المعتمدين</span></span></div>
-      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>الإعداد المهني</b> <span>— إدراك × المجلس الثقافي البريطاني</span></span></div>
-      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>الإنجليزية لبيئة العمل</b> <span>— إدراك × المجلس الثقافي البريطاني</span></span></div>
+      <div class="doc-cert-row"><span class="y">2023</span><span class="t"><b>تصور البيانات باستخدام بايثون</b> <span>· Udemy</span></span></div>
+      <div class="doc-cert-row"><span class="y">2022</span><span class="t"><b>شهادة الكتابة الأكاديمية</b> <span>· Coursera</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>تدريب المدربين (TOT)</b> <span>· إدراك × المجلس الدولي للمدربين المعتمدين</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>الإعداد المهني</b> <span>· إدراك × المجلس الثقافي البريطاني</span></span></div>
+      <div class="doc-cert-row"><span class="y">2021</span><span class="t"><b>الإنجليزية لبيئة العمل</b> <span>· إدراك × المجلس الثقافي البريطاني</span></span></div>
 
       <h2 id="d-languages-ar" class="doc-section">اللغات</h2>
       <div class="doc-lang-row"><strong>العربية</strong><span>اللغة الأم</span></div>
-      <div class="doc-lang-row"><strong>الإنجليزية</strong><span>متقدّم — C1 (كتابةً ومحادثة)</span></div>
+      <div class="doc-lang-row"><strong>الإنجليزية</strong><span>متقدّم، C1 (كتابةً ومحادثة)</span></div>
 
       <h2 id="d-accomplishments-ar" class="doc-section">الإنجازات</h2>
       <ul class="doc-bullets">
-        <li>بناء خادم MCP يتيح حاليًا لنماذج الذكاء الاصطناعي الوصول إلى أكثر من 4 ملايين سجل أكاديمي عربي.</li>
-        <li>بوت وظائف اليمن يخدم أكثر من <b>4,900 مشترك</b> على تيليجرام في قناة <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> مع ترجمة عربية لإعلانات الوظائف من 6 مصادر بالذكاء الاصطناعي.</li>
-        <li>تقييم 5 نجوم من 92٪ من العملاء على Upwork وFiverr.</li>
-        <li>المشاركة في تأليف بحث منشور عن الذكاء الاصطناعي في الرعاية الصحية (Journal of Computer Science، 2023).</li>
-        <li>تصميم أكثر من 70 عرضًا تقديميًا بحثيًا اعتمدته مؤتمرات دولية وجامعات في الشرق الأوسط.</li>
-        <li>سلسلة إنفوجرافيك بيانية اعتُمدت في عدد من جامعات المنطقة.</li>
-        <li>الإشراف على أكثر من 30 طالبًا مع تحسّن قابل للقياس في الدرجات ورضا عالٍ من أولياء الأمور.</li>
-        <li>GitHub: 76 مستودعًا · 315 نجمة ممنوحة · Quickdraw · Pair Extraordinaire · Pull Shark ×2 · YOLO.</li>
+        <li>نشر 4 خوادم MCP مفتوحة المصدر، منها خادم يتيح لنماذج الذكاء الاصطناعي الوصول إلى أكثر من 4 ملايين سجل أكاديمي عربي، وآخر يبحث في 18 مصدرًا أكاديميًا.</li>
+        <li>تنمية بوت وظائف اليمن إلى <b>أكثر من 5,600 مشترك</b> على تيليجرام في قناة <a href="https://t.me/hr_yemen" target="_blank" rel="noopener">@hr_yemen</a> مع إعلانات وظائف مترجمة بالذكاء الاصطناعي من 6 مصادر.</li>
+        <li>نشر حزمة <a href="https://www.npmjs.com/package/@dawod/thmanyah-font-web" target="_blank" rel="noopener">@dawod/thmanyah-font-web</a> على npm: أكثر من 2,300 تنزيل خلال الشهر الأخير.</li>
+        <li>GitHub: 116 مستودعًا تشمل خوادم MCP وبوتات تيليجرام ومشاريع واجهات أمامية.</li>
       </ul>
 
     </article>
@@ -1617,10 +1771,10 @@
 
   // ---- Typed roles ----
   const roles = [
-    'building serverless backends on Cloudflare Workers',
-    'shipping AI-accessible MCP tools',
-    'writing clean APIs in Node.js + TypeScript',
-    'designing Telegram bots that actually scale',
+    'shipping MCP servers that AI agents can use',
+    'building bilingual Arabic/English interfaces',
+    'running Telegram bots on Cloudflare Workers',
+    'writing clean APIs in TypeScript',
     'open-sourcing Arabic-language AI tooling'
   ];
   const typedEl = document.getElementById('typed');
